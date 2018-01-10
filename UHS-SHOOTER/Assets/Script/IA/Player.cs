@@ -1,13 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Humanoid {
+public class Player : Humanoid 
+{
     
     private CheckPoint actualPosition;
     private const int coverPos = 5;
     private KeyCode btnTir = KeyCode.T;
-
     public CamManager CamMngr;
     
     //Enemy
@@ -19,7 +20,7 @@ public class Player : Humanoid {
     public TutoManager TutoMngr;
 
 	// Use this for initialization
-	void Start ()
+	void Start()
     {
         //get script camm manager on it
         CamMngr = gameObject.GetComponent<CamManager>();
@@ -46,8 +47,11 @@ public class Player : Humanoid {
                 // Lorsque le joueur arrive, on enlève sa position dans la list et on passe dans l'étape arrivée
                 if (HasArrived())
                 {
-                    actualPosition = destination[0];
-                    destination.RemoveAt(0);
+                    if (destination.Count > 0)
+                    {
+                        actualPosition = destination[0];
+                        destination.RemoveAt(0);
+                    }
                     SwitchState(Etape.Arrived);
                 }
 
@@ -63,46 +67,41 @@ public class Player : Humanoid {
 
                 SwitchState(Etape.GoCovered);
 
-                break;
-
-            case Etape.GoCovered:
-
-                transform.rotation = Quaternion.Slerp(transform.rotation, GetDestination().rotation, 10 * Time.deltaTime);
-                if (Mathf.Approximately(transform.rotation.y, GetDestination().rotation.y))
-                {
-                    SwitchState(Etape.Covered);
-                } 
+                // Se déplace vers le check point
+                this.SetDestination(actualPosition.transform);
+                MoveToThisPoint(false);
 
                 //switch cam position
                 CamMngr.SwitchPosCam("TPS");
 
-                // Se déplace vers le check point
-                SetDestination(actualPosition.transform);
-                MoveToThisPoint();
+                break;
+
+            //Se déplace vers le point pour se mettre à couvert
+            case Etape.GoCovered:
+
+                if (HasArrived())
+                {
+                    transform.rotation = Quaternion.Slerp(transform.rotation, GetDestination().rotation, 10 * Time.deltaTime);
+
+                    if (Mathf.Approximately(Math.Abs(transform.rotation.y), Math.Abs(GetDestination().rotation.y)))
+                    {
+                        SwitchState(Etape.Covered);
+                        StartCoroutine("WaitCovered");
+                    }
+                }
+
 
                 break;
 
             // Si le joueur est à couvert, un appuie sur le bouton haut nous fait passer dans l'étape "Uncovered"
             case Etape.Covered:
                 
-                //Go to Undercovered State
-                if (Input.GetKeyDown(KeyCode.UpArrow))
-                {
-                    SwitchState(Etape.GoUncovered);
-                    //switch cam position
-                    CamMngr.SwitchPosCam("FPS");
-
-                    // Se déplace vers le point de découverte
-                    this.SetDestination(actualPosition.ptDecouvert.transform);
-                    MoveToThisPoint();
-                }
-
                 break;
 
             // si appuie sur touche "haut", déplacement vers le point de découvert
             case Etape.GoUncovered:
                 
-                if (!CamMngr.IsMoving())
+                if (!CamMngr.IsMoving() && HasArrived())
                 {
                     SwitchState(Etape.Uncovered);
                 }
@@ -125,11 +124,11 @@ public class Player : Humanoid {
                 //Choose Enemy
                 if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
-                   target = ChooseTarget(-1);
+					target = ChooseTarget(-1);
                 }
                 if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
-                   target = ChooseTarget(1);
+                    target = ChooseTarget(1);
                 }
 
                
@@ -137,7 +136,11 @@ public class Player : Humanoid {
                 if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     col.enabled = false;
-                    SwitchState(Etape.Covered);
+                    SwitchState(Etape.GoCovered);
+
+                    // Se déplace vers le point à couvert
+                    this.SetDestination(actualPosition.transform);
+                    MoveToThisPoint(false);
                 }
 
                 break;
@@ -153,7 +156,7 @@ public class Player : Humanoid {
         if (destination[0].GetTransform())
         {
             SetDestination(destination[0].GetTransform());
-            MoveToThisPoint();
+            MoveToThisPoint(true);
         }
     }
 
@@ -164,13 +167,13 @@ public class Player : Humanoid {
         _enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
         
-        for (int i = 0; i< _enemies.Length; i++)
+        for (int i = 0; i < _enemies.Length; i++)
         {
             Enemies.Add(_enemies[i]);
         }
         EnemiesFind = true;
 
-        Debug.Log(Enemies.Count);
+        //Debug.Log(Enemies.Count);
 
         //Player targeting enemies
         for (int i = 0; i < Enemies.Count; i++)
@@ -187,7 +190,7 @@ public class Player : Humanoid {
         for (int i = 0; i < Enemies.Count; i++)
         {
             //si l'enemi est mort on l'enleve de la liste
-           if (!Enemies[i])
+            if (!Enemies[i])
             {
                 Enemies.Remove(Enemies[i]);
                 
@@ -222,25 +225,25 @@ public class Player : Humanoid {
             }
         }
 
-        if (!_enemyCloser) Debug.Log("Mauvaise direction");
+        if (!_enemyCloser)
+        {
+            Debug.Log("Mauvaise direction");
+        }
+
         return _enemyCloser;
     }
 
-
-    /*
-    [System.Serializable]
-    /// <summary>
-    /// Type qui contient la destination et le point pour se mettre à découvert
-    /// </summary>
-    public class Destination
+    IEnumerator WaitCovered()
     {
-        public Transform ptDestination;
-        public Transform ptDecouvert;
+        yield return new WaitForSeconds(0.1f);
+        
+        SwitchState(Etape.GoUncovered);
+        //switch cam position
+        CamMngr.SwitchPosCam("FPS");
 
-        public Destination()
-        {
-
-        }
-    }*/
+        // Se déplace vers le point à découvert
+        this.SetDestination(actualPosition.ptDecouvert.transform);
+        MoveToThisPoint(false);
+    }
 }
 

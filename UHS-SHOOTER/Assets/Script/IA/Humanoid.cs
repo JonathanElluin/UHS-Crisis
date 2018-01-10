@@ -75,12 +75,19 @@ public class Humanoid : MonoBehaviour {
     }
 
 
-     // PARTIE MOUVEMENT
+    // PARTIE MOUVEMENT
 
-     //Set destination of IA
-     public void SetDestination(Transform _destination)
+    //Set destination of IA
+    public void SetDestination(CheckPoint _destination)
     {
-        Destination = _destination;
+        destination.Add(_destination);
+
+        Destination = _destination.transform;
+    }
+
+    public void SetDestination(Transform _destination)
+    {
+        Destination = _destination.transform;
     }
 
     public Transform GetDestination()
@@ -89,15 +96,19 @@ public class Humanoid : MonoBehaviour {
     }
 
     // Move to the goal point
-    public void MoveToThisPoint()
+    public void MoveToThisPoint(bool moveToNewDestination)
     {
         if (Destination)
         {
             agent.isStopped = false;
             agent.SetDestination(Destination.position);
-            SwitchState(Etape.Moving);
+
+            // On passe dans l'étape "Moving" uniquement si l'on se rends vers une nouvelle destination
+            if (moveToNewDestination)
+            {
+                SwitchState(Etape.Moving);
+            }
         }
- 
     }
 
     // Return true if the destination is reach

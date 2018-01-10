@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnPoints : MonoBehaviour {
 
     public GameObject[] spawnPoints;
-    public GameObject[] checkPoints;
+    public CheckPoint[] checkPoints;
     public GameObject prefabEnemy;
     public GameObject ptDecouvert;
     private int EnemiesAlive = 0;
@@ -47,6 +47,7 @@ public class SpawnPoints : MonoBehaviour {
                 
                 scriptEnemy.spawnPointsScript = this;
                 scriptEnemy.SetDestination(checkPoints[i].transform);
+                scriptEnemy.checkPoint = checkPoints[i];
                 scriptEnemy.target = other.gameObject;
                 EnemiesAlive++;
             }
