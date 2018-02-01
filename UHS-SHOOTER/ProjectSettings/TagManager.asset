@@ -8,6 +8,8 @@ TagManager:
   - Trigger
   - CheckPoint
   - Enemy
+  - PtDecouvert
+  - TacticCam
   layers:
   - Default
   - TransparentFX

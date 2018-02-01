@@ -21,10 +21,7 @@ public class Projectile : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.tag);
-
-
-        if (other.tag =="CheckPoint")
+        if (other.tag == "CheckPoint" || other.tag == "Trigger")
         {
 
         }
@@ -32,7 +29,6 @@ public class Projectile : MonoBehaviour {
         // If the projectile hits an enemy or the player, it deals damages and disappear
         else if (other.tag == "Enemy" || other.tag == "Player")
         {
-            Debug.Log("character");
             other.gameObject.GetComponent<HealthManager>().TakeDammage(damages);
             Destroy(gameObject);
         }
@@ -40,7 +36,10 @@ public class Projectile : MonoBehaviour {
         // If it hits a wall, it disappear. 
         else if (other.tag == "Mur")
         {
-            Debug.Log("wall");
+            Destroy(gameObject);
+        }
+        else
+        {
             Destroy(gameObject);
         }
     }

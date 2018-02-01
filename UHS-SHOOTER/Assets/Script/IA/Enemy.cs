@@ -57,27 +57,16 @@ public class Enemy : Humanoid {
 
                 if (HasArrived())
                 {
-                    //transform.rotation = Quaternion.Slerp(transform.rotation, GetDestination().rotation, 10 * Time.deltaTime);
-
-                    iTween.RotateTo(gameObject, new Vector3(checkPoint.transform.rotation.x, checkPoint.transform.rotation.y, checkPoint.transform.rotation.z), 1);
-
-                    if (Mathf.Approximately(transform.rotation.y, GetDestination().rotation.y))
-                    {
-                        SwitchState(Etape.Covered);
-                        StartCoroutine("WaitCovered");
-                    }
-
-                    //// Se déplace vers le check point
-                    //SetDestination(checkPoint);
-                    //MoveToThisPoint(false);
-
+                    SwitchState(Etape.Covered);
+                    StartCoroutine("WaitCovered");
                 }
 
                 break;
 
             // Si le joueur est à couvert, un appuie sur le bouton haut nous fait passer dans l'étape "Uncovered"
             case Etape.Covered:
-                
+
+                iTween.RotateTo(gameObject, new Vector3(checkPoint.transform.rotation.x, checkPoint.transform.rotation.y, checkPoint.transform.rotation.z), 1);
 
                 break;
 
@@ -107,7 +96,6 @@ public class Enemy : Humanoid {
                 }
 
                 break;
-
         }
     }
 
@@ -123,21 +111,30 @@ public class Enemy : Humanoid {
 
         SwitchState(Etape.GoUncovered);
 
-        // Se déplace vers le point à découvert
-        SetDestination(checkPoint.ptDecouvert.transform);
-        MoveToThisPoint(false);
+        // Si pas de point à découvert on ne va pas vers ce point 
+        if (checkPoint.ptDecouvert != null)
+        {
+            // Se déplace vers le point à découvert
+            SetDestination(checkPoint.ptDecouvert.transform);
+            MoveToThisPoint(false);
+        }
     }
 
     IEnumerator WaitUncovered()
     {
         yield return new WaitForSeconds(waitTimeUncovered);
 
-        col.enabled = false;
-        SwitchState(Etape.GoCovered);
 
-        // Se déplace vers le point à couvert
-        SetDestination(checkPoint);
-        MoveToThisPoint(false);
+        // Si le CheckPoint n'a pas de point à découvert, on ne se met pas à couvert
+        if (checkPoint.ptDecouvert != null)
+        {
+            col.enabled = false;
+            SwitchState(Etape.GoCovered);
+
+            // Se déplace vers le point à couvert
+            SetDestination(checkPoint);
+            MoveToThisPoint(false);
+        }
     }
 
     IEnumerator Shoot()

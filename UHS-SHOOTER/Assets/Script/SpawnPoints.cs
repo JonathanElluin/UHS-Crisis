@@ -13,8 +13,8 @@ public class SpawnPoints : MonoBehaviour {
     public Camera CamTactic;
 
     // Use this for initialization
-    void Start () {
-
+    void Start ()
+    {
 
 	}
 	

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23647656646082448}
   m_Layer: 0
   m_Name: StairPart (4)
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 23786529600489348}
   m_Layer: 0
   m_Name: StairPart (3)
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 23013765376746080}
   m_Layer: 0
   m_Name: StairPart (2)
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 23960976554620004}
   m_Layer: 0
   m_Name: StairPart (5)
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 23674252455865010}
   m_Layer: 0
   m_Name: StairPart (1)
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 23687641298202470}
   m_Layer: 0
   m_Name: StairPart (8)
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 23285512589479868}
   m_Layer: 0
   m_Name: StairPart (6)
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 4493501608654608}
   m_Layer: 0
   m_Name: Little Stairs
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 23933245916717476}
   m_Layer: 0
   m_Name: StairPart (7)
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -228,8 +228,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1708865687336364}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6, y: 6.5, z: -10.5}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -14, y: 14, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4480770964459588}
@@ -242,7 +242,7 @@ Transform:
   - {fileID: 4087423045940880}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!4 &4530627418908518
 Transform:
   m_ObjectHideFlags: 1

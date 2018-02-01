@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,7 +16,7 @@ public class CamManager : MonoBehaviour {
     //current destination
     Transform DestinationCam;
 
-    bool MoveCam = false;
+    bool moveCam = false;
     // Use this for initialization
     void Start () {
 
@@ -24,20 +25,20 @@ public class CamManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //Move and rotate PlayerCam to its destination
-        if (MoveCam)
+        if (moveCam)
         {
             MainCam.transform.rotation = Quaternion.Slerp(MainCam.transform.rotation, DestinationCam.rotation, time * Time.deltaTime);
             MainCam.transform.position = Vector3.Lerp(MainCam.transform.position, DestinationCam.position, time * Time.deltaTime);
         }
 
-        if (!MoveCam) return;
+        if (!moveCam) return;
+
 
         //Stop move and rotate
         if (MainCam.transform.rotation == DestinationCam.rotation & MainCam.transform.position == DestinationCam.position)
         {
-            MoveCam = false;
+            moveCam = false;
         }
-
     }
 
     public void SetTPSCam(Transform _cam)
@@ -47,12 +48,23 @@ public class CamManager : MonoBehaviour {
 
     public void SwitchPosCam(string _choice)
     {
-        MoveCam = true;
+        moveCam = true;
         DestinationCam = (_choice == "TPS") ? CamTPS : CamFPS;
+
+        StartCoroutine("Wait2Second");
     }
 
     public bool IsMoving()
     {
-        return MoveCam;
+        return moveCam;
+    }
+
+
+    // Après 1.5 secondes, on dit que la cam est alignée
+    IEnumerator Wait2Second()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        moveCam = false;
     }
 }
