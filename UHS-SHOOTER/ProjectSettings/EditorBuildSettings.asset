@@ -8,12 +8,15 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/Ing/Test_SwitchLvl.unity
     guid: ac4412442117af341a956eae6e874527
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/Ing/Test_Targeting.unity
     guid: 34d0ac3aa525c134e9007aea7b33e45b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/Ing/Test_Scene_Hall.unity
     guid: 0b5538d044ab08c40bfd4c053a02a50a
+  - enabled: 1
+    path: Assets/Scene/LD/Scene_Hall.unity
+    guid: a4a1d5a2c66dd86428b51f73a74f4cc4
