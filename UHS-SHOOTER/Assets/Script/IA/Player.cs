@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class Player : Humanoid 
@@ -125,6 +126,7 @@ public class Player : Humanoid
                 
                 if (HasArrived())
                 {
+                    transform.rotation = GetDestination().rotation;
                     SwitchState(Etape.Uncovered);
                 }
                 break;

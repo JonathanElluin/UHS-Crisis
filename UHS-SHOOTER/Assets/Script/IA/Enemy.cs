@@ -75,6 +75,7 @@ public class Enemy : Humanoid {
                 
                 if (HasArrived())
                 {
+                    transform.rotation = Quaternion.Slerp(transform.rotation, GetDestination().rotation, 10 * Time.deltaTime);
                     SwitchState(Etape.Uncovered);
                     StartCoroutine("WaitUncovered");
                 }
