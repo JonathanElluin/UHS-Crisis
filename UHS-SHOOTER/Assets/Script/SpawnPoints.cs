@@ -36,7 +36,7 @@ public class SpawnPoints : MonoBehaviour {
                 playerScript.CamMngr.SetTPSCam(CamTactic.transform);
             }
 
-
+            // Fais spawn des ennemis
             for (int i = 0; i < spawnPoints.Length; i++)
             {
                 GameObject _enemy = Instantiate(prefabEnemy, spawnPoints[i].transform.position, Quaternion.identity);

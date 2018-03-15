@@ -16,14 +16,13 @@ public class Humanoid : MonoBehaviour {
     public NavMeshAgent agent;
     HealthManager healthManager;
     public Collider col;
-    TutoManager Tuto;
 
     //Goal
     public GameObject target;
     Transform Destination;
 
     //State
-    public enum Etape { Moving, Arrived, GoCovered, Covered, GoUncovered , Uncovered }
+    public enum Etape { Tuto, Moving, Arrived, GoCovered, Covered, GoUncovered , Uncovered }
     public Etape HumanState;
 
     // Use this for initialization
@@ -43,6 +42,9 @@ public class Humanoid : MonoBehaviour {
         HumanState = _state;
         switch (HumanState)
         {
+            case Etape.Tuto:
+                break;
+
             case Etape.Moving:
                 break;
 
@@ -63,7 +65,9 @@ public class Humanoid : MonoBehaviour {
     }
 
 
-    // Tir
+    /// <summary>
+    /// Envoie un projectile
+    /// </summary>
     public void Fire()
     {
         Vector3 positionOutsideObject = transform.position;

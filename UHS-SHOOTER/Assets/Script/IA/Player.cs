@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Player : Humanoid 
 {
@@ -12,9 +14,10 @@ public class Player : Humanoid
     private KeyCode btnTir = KeyCode.Space;
     public CamManager CamMngr;
 
+    public GameObject tutoImage;
+    private Text tutoText;
 
-
-    public int LONGUEURMAX = 5;//min
+    //public int LONGUEURMAX = 5;//min
 
 
     
@@ -24,19 +27,23 @@ public class Player : Humanoid
     int indexEnemies = 0;
 
     //Tuto
-    public TutoManager TutoMngr;
+    private bool tutoDone = false;
 
-    private bool haveWaited5Sec = false;
+    private bool haveWaited2Sec = false;
+    private bool haveWaitedXSec = false;
+    private float X;
 
-	// Use this for initialization
-	void Start()
+    // Use this for initialization
+    void Start()
     {
         //get script camm manager on it
         CamMngr = gameObject.GetComponent<CamManager>();
         Init();
+        
         //Set Player Destination
         GoToNextPosition();
 
+        tutoText = tutoImage.transform.GetChild(0).gameObject.GetComponent<Text>();
 
         //DeactivateMeshRenderer("PtDecouvert");
         //DeactivateMeshRenderer("CheckPoint");
@@ -64,19 +71,48 @@ public class Player : Humanoid
 
         switch (HumanState)
         {
+            // On commence avec le tutoriel
+            case Etape.Tuto:
+
+                // On écrit les consignes dans le texte
+                tutoText.text = "OK... Des ennemis vont arriver. " + Environment.NewLine + Environment.NewLine +
+                                "Les <b>touches fléchées gauche et droite</b> permettent de verrouiller la visée sur un ennemi, et la <b>touche espace</b> permet de tirer. " + Environment.NewLine + Environment.NewLine + 
+                                "C'est parti !";
+
+                if (haveWaitedXSec)
+                {
+                    SwitchState(Etape.Moving);
+                    tutoDone = true;
+                    gameObject.GetComponent<NavMeshAgent>().speed = 6;
+                    tutoImage.SetActive(false);
+                }
+
+                break;
+
 
             // Si le joueur arrive à destination, on passe dans l'étape "Arrived"
             case Etape.Moving:
 
-                // Lorsque le joueur arrive, on enlève sa position dans la list et on passe dans l'étape arrivée
-                if (HasArrived())
+                if (!tutoDone)
                 {
-                    if (destination.Count > 0)
+                    gameObject.GetComponent<NavMeshAgent>().speed = 2;
+
+                    X = 7.5f;
+                    StartCoroutine("WaitXSecond");
+                    SwitchState(Etape.Tuto);
+                }
+                else {
+
+                    // Lorsque le joueur arrive, on enlève sa position dans la list et on passe dans l'étape arrivée
+                    if (HasArrived())
                     {
-                        actualPosition = destination[0];
-                        destination.RemoveAt(0);
+                        if (destination.Count > 0)
+                        {
+                            actualPosition = destination[0];
+                            destination.RemoveAt(0);
+                        }
+                        SwitchState(Etape.Arrived);
                     }
-                    SwitchState(Etape.Arrived);
                 }
 
                 break;
@@ -107,7 +143,7 @@ public class Player : Humanoid
                 {
                     this.transform.rotation = GetDestination().rotation;
 
-                    if (haveWaited5Sec)
+                    if (haveWaited2Sec)
                     {
                         SwitchState(Etape.Covered);
                         StartCoroutine("WaitCovered");
@@ -312,11 +348,20 @@ public class Player : Humanoid
 
     IEnumerator Wait2Second()
     {
-        haveWaited5Sec = false;
+        haveWaited2Sec = false;
 
         yield return new WaitForSeconds(2);
 
-        haveWaited5Sec = true;
+        haveWaited2Sec = true;
+    }
+
+    IEnumerator WaitXSecond()
+    {
+        haveWaitedXSec = false;
+
+        yield return new WaitForSeconds(X);
+
+        haveWaitedXSec = true;
     }
 }
 
