@@ -11,6 +11,12 @@ public class Player : Humanoid
     private const int coverPos = 5;
     private KeyCode btnTir = KeyCode.Space;
     public CamManager CamMngr;
+
+
+
+    public int LONGUEURMAX = 5;//min
+
+
     
     //Enemy
     bool EnemiesFind = false;
@@ -32,9 +38,9 @@ public class Player : Humanoid
         GoToNextPosition();
 
 
-        DeactivateMeshRenderer("PtDecouvert");
-        DeactivateMeshRenderer("CheckPoint");
-        DeactivateMeshRenderer("Respawn");
+        //DeactivateMeshRenderer("PtDecouvert");
+        //DeactivateMeshRenderer("CheckPoint");
+        //DeactivateMeshRenderer("Respawn");
     }
 
     private void DeactivateMeshRenderer(string tag)
@@ -100,6 +106,7 @@ public class Player : Humanoid
                 if (HasArrived())
                 {
                     this.transform.rotation = GetDestination().rotation;
+
                     if (haveWaited5Sec)
                     {
                         SwitchState(Etape.Covered);
@@ -107,7 +114,7 @@ public class Player : Humanoid
                     }
                     else
                     {
-                        StartCoroutine("Wait5Second");
+                        StartCoroutine("Wait2Second");
                     }
                 }
 
@@ -128,6 +135,7 @@ public class Player : Humanoid
                 {
                     transform.rotation = GetDestination().rotation;
                     SwitchState(Etape.Uncovered);
+                    target = ChooseTarget(1);
                 }
                 break;
 
@@ -302,11 +310,11 @@ public class Player : Humanoid
         }
     }
 
-    IEnumerator Wait5Second()
+    IEnumerator Wait2Second()
     {
         haveWaited5Sec = false;
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2);
 
         haveWaited5Sec = true;
     }

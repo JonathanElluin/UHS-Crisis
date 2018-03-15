@@ -242,7 +242,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1594268961792410}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -43.98, y: 1.367, z: -17.38}
+  m_LocalPosition: {x: -16.84, y: 0.69, z: -19.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4655906521670554}
@@ -507,13 +507,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destination:
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   Projectile: {fileID: 1145037282955554, guid: d9d05ffbe1692d7498fb799360c6c23a, type: 2}
   damages: 1
   agent: {fileID: 195983806626035986}
   col: {fileID: 136103210913372172}
   target: {fileID: 0}
   HumanState: 0
-  CamMngr: {fileID: 0}
+  CamMngr: {fileID: 114079706833616336}
   TutoMngr: {fileID: 0}
 --- !u!114 &114079706833616336
 MonoBehaviour:
@@ -542,7 +551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 500
   isAlive: 1
-  LifeBar: {fileID: 0}
+  LifeBar: {fileID: 114603494481631564}
   prefabConfetis: {fileID: 1328363280944608, guid: ba8ef80c0e3dd874a8d298fece57555a,
     type: 2}
 --- !u!114 &114277790066577152
