@@ -8,360 +8,360 @@ using UnityEngine.UI;
 
 public class Player : Humanoid 
 {
-    
-    private CheckPoint actualPosition;
-    private const int coverPos = 5;
-    private KeyCode btnTir = KeyCode.Space;
-    public CamManager CamMngr;
+	
+	private CheckPoint actualPosition;
+	private const int coverPos = 5;
+	private KeyCode btnTir = KeyCode.Space;
+	public CamManager CamMngr;
 
-    public GameObject tutoImage;
-    private Text tutoText;
+	public GameObject tutoImage;
+	private Text tutoText;
 
-    //public int LONGUEURMAX = 5;//min
-
-
-    
-    //Enemy
-    bool EnemiesFind = false;
-    List<GameObject> Enemies = new List<GameObject>();
-    int indexEnemies = 0;
-
-    //Tuto
-    private bool tutoDone = false;
-
-    private bool haveWaited2Sec = false;
-    private bool haveWaitedXSec = false;
-    private float X;
-
-    // Use this for initialization
-    void Start()
-    {
-        //get script camm manager on it
-        CamMngr = gameObject.GetComponent<CamManager>();
-        Init();
-        
-        //Set Player Destination
-        GoToNextPosition();
-
-        tutoText = tutoImage.transform.GetChild(0).gameObject.GetComponent<Text>();
-
-        //DeactivateMeshRenderer("PtDecouvert");
-        //DeactivateMeshRenderer("CheckPoint");
-        //DeactivateMeshRenderer("Respawn");
-    }
-
-    private void DeactivateMeshRenderer(string tag)
-    {
-        GameObject[] objects = GameObject.FindGameObjectsWithTag(tag);
-
-        foreach(GameObject obj in objects)
-        {
-            obj.GetComponent<MeshRenderer>().enabled = false;
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-        if (!IsAlive())
-        {
-            return;
-        }
-
-        switch (HumanState)
-        {
-            // On commence avec le tutoriel
-            case Etape.Tuto:
-
-                // On écrit les consignes dans le texte
-                tutoText.text = "OK... Des ennemis vont arriver. " + Environment.NewLine + Environment.NewLine +
-                                "Les <b>touches fléchées gauche et droite</b> permettent de verrouiller la visée sur un ennemi, et la <b>touche espace</b> permet de tirer. " + Environment.NewLine + Environment.NewLine + 
-                                "C'est parti !";
-
-                if (haveWaitedXSec)
-                {
-                    SwitchState(Etape.Moving);
-                    tutoDone = true;
-                    gameObject.GetComponent<NavMeshAgent>().speed = 6;
-                    tutoImage.SetActive(false);
-                }
-
-                break;
+	//public int LONGUEURMAX = 5;//min
 
 
-            // Si le joueur arrive à destination, on passe dans l'étape "Arrived"
-            case Etape.Moving:
+	
+	//Enemy
+	bool EnemiesFind = false;
+	List<GameObject> Enemies = new List<GameObject>();
+	int indexEnemies = 0;
 
-                if (!tutoDone)
-                {
-                    gameObject.GetComponent<NavMeshAgent>().speed = 2;
+	//Tuto
+	private bool tutoDone = false;
 
-                    X = 7.5f;
-                    StartCoroutine("WaitXSecond");
-                    SwitchState(Etape.Tuto);
-                }
-                else {
+	private bool haveWaited2Sec = false;
+	private bool haveWaitedXSec = false;
+	private float X;
 
-                    // Lorsque le joueur arrive, on enlève sa position dans la list et on passe dans l'étape arrivée
-                    if (HasArrived())
-                    {
-                        if (destination.Count > 0)
-                        {
-                            actualPosition = destination[0];
-                            destination.RemoveAt(0);
-                        }
-                        SwitchState(Etape.Arrived);
-                    }
-                }
+	// Use this for initialization
+	void Start()
+	{
+		//get script camm manager on it
+		CamMngr = gameObject.GetComponent<CamManager>();
+		Init();
+		
+		//Set Player Destination
+		GoToNextPosition();
 
-                break;
+		tutoText = tutoImage.transform.GetChild(0).gameObject.GetComponent<Text>();
 
-            // Si le joueur est arrivé, on fait spawn les ennemis et on passe dans l'étape "Covered"
-            case Etape.Arrived:
+		//DeactivateMeshRenderer("PtDecouvert");
+		//DeactivateMeshRenderer("CheckPoint");
+		//DeactivateMeshRenderer("Respawn");
+	}
 
-                if (!EnemiesFind)
-                {
-                    FindEnemies();
-                }
-                
-                SwitchState(Etape.GoCovered);
+	private void DeactivateMeshRenderer(string tag)
+	{
+		GameObject[] objects = GameObject.FindGameObjectsWithTag(tag);
 
-                // Se déplace vers le check point
-                this.SetDestination(actualPosition.transform);
-                MoveToThisPoint(false);
+		foreach(GameObject obj in objects)
+		{
+			obj.GetComponent<MeshRenderer>().enabled = false;
+		}
+	}
 
-                //switch cam position
-                CamMngr.SwitchPosCam("TPS");
+	// Update is called once per frame
+	void Update()
+	{
 
-                break;
+		if (!IsAlive())
+		{
+			return;
+		}
 
-            //Se déplace vers le point pour se mettre à couvert
-            case Etape.GoCovered:
+		switch (HumanState)
+		{
+			// On commence avec le tutoriel
+			case Etape.Tuto:
 
-                if (HasArrived())
-                {
-                    this.transform.rotation = GetDestination().rotation;
+				// On écrit les consignes dans le texte
+				tutoText.text = "OK... Des ennemis vont arriver. " + Environment.NewLine + Environment.NewLine +
+								"Les <b>touches fléchées gauche et droite</b> permettent de verrouiller la visée sur un ennemi, et la <b>touche espace</b> permet de tirer. " + Environment.NewLine + Environment.NewLine + 
+								"C'est parti !";
 
-                    if (haveWaited2Sec)
-                    {
-                        SwitchState(Etape.Covered);
-                        StartCoroutine("WaitCovered");
-                    }
-                    else
-                    {
-                        StartCoroutine("Wait2Second");
-                    }
-                }
+				if (haveWaitedXSec)
+				{
+					SwitchState(Etape.Moving);
+					tutoDone = true;
+					gameObject.GetComponent<NavMeshAgent>().speed = 6;
+					tutoImage.SetActive(false);
+				}
+
+				break;
 
 
-                break;
+			// Si le joueur arrive à destination, on passe dans l'étape "Arrived"
+			case Etape.Moving:
 
-            // Si le joueur est à couvert, un appuie sur le bouton haut nous fait passer dans l'étape "Uncovered"
-            case Etape.Covered:
+				if (!tutoDone)
+				{
+					gameObject.GetComponent<NavMeshAgent>().speed = 2;
 
-                transform.rotation = Quaternion.Slerp(transform.rotation, GetDestination().rotation, 10 * Time.deltaTime);
+					X = 7.5f;
+					StartCoroutine("WaitXSecond");
+					SwitchState(Etape.Tuto);
+				}
+				else {
 
-                break;
+					// Lorsque le joueur arrive, on enlève sa position dans la list et on passe dans l'étape arrivée
+					if (HasArrived())
+					{
+						if (destination.Count > 0)
+						{
+							actualPosition = destination[0];
+							destination.RemoveAt(0);
+						}
+						SwitchState(Etape.Arrived);
+					}
+				}
 
-            // si appuie sur touche "haut", déplacement vers le point de découvert
-            case Etape.GoUncovered:
-                
-                if (HasArrived())
-                {
-                    transform.rotation = GetDestination().rotation;
-                    SwitchState(Etape.Uncovered);
-                    target = ChooseTarget(1);
-                }
-                break;
+				break;
 
-            // Lorsque que le joueur arrive au point de destination, il est à découvert et peut tirer
-            case Etape.Uncovered:
-                
-                //Look enemy and shoot
-                if (target)
-                {
-                    LookToTarget();
+			// Si le joueur est arrivé, on fait spawn les ennemis et on passe dans l'étape "Covered"
+			case Etape.Arrived:
 
-                    if (Input.GetKeyDown(btnTir))
-                    {
-                        Fire();
-                    }
-                }
-                
-                //Choose Enemy
-                if (Input.GetKeyDown(KeyCode.LeftArrow))
-                {
+				if (!EnemiesFind)
+				{
+					FindEnemies();
+				}
+				
+				SwitchState(Etape.GoCovered);
+
+				// Se déplace vers le check point
+				this.SetDestination(actualPosition.transform);
+				MoveToThisPoint(false);
+
+				//switch cam position
+				CamMngr.SwitchPosCam("TPS");
+
+				break;
+
+			//Se déplace vers le point pour se mettre à couvert
+			case Etape.GoCovered:
+
+				if (HasArrived())
+				{
+					this.transform.rotation = GetDestination().rotation;
+
+					if (haveWaited2Sec)
+					{
+						SwitchState(Etape.Covered);
+						StartCoroutine("WaitCovered");
+					}
+					else
+					{
+						StartCoroutine("Wait2Second");
+					}
+				}
+
+
+				break;
+
+			// Si le joueur est à couvert, un appuie sur le bouton haut nous fait passer dans l'étape "Uncovered"
+			case Etape.Covered:
+
+				transform.rotation = Quaternion.Slerp(transform.rotation, GetDestination().rotation, 10 * Time.deltaTime);
+
+				break;
+
+			// si appuie sur touche "haut", déplacement vers le point de découvert
+			case Etape.GoUncovered:
+				
+				if (HasArrived())
+				{
+					transform.rotation = GetDestination().rotation;
+					SwitchState(Etape.Uncovered);
+					target = ChooseTarget(1);
+				}
+				break;
+
+			// Lorsque que le joueur arrive au point de destination, il est à découvert et peut tirer
+			case Etape.Uncovered:
+				
+				//Look enemy and shoot
+				if (target)
+				{
+					LookToTarget();
+
+					if (Input.GetKeyDown(btnTir))
+					{
+						Fire();
+					}
+				}
+				
+				//Choose Enemy
+				if (Input.GetKeyDown(KeyCode.LeftArrow))
+				{
 					target = ChooseTarget(-1);
-                }
-                if (Input.GetKeyDown(KeyCode.RightArrow))
-                {
-                    target = ChooseTarget(1);
-                }
+				}
+				if (Input.GetKeyDown(KeyCode.RightArrow))
+				{
+					target = ChooseTarget(1);
+				}
 
-               
-                //Go to Covered state if there is an uncover point
-                if (Input.GetKeyDown(KeyCode.DownArrow) && actualPosition.ptDecouvert != null)
-                {
-                    col.enabled = false;
-                    SwitchState(Etape.GoCovered);
+			   
+				//Go to Covered state if there is an uncover point
+				if (Input.GetKeyDown(KeyCode.DownArrow) && actualPosition.ptDecouvert != null)
+				{
+					col.enabled = false;
+					SwitchState(Etape.GoCovered);
 
-                    // Se déplace vers le point à couvert
-                    this.SetDestination(actualPosition.transform);
-                    MoveToThisPoint(false);
-                }
+					// Se déplace vers le point à couvert
+					this.SetDestination(actualPosition.transform);
+					MoveToThisPoint(false);
+				}
 
-                break;
-        
-        }
-    }
+				break;
+		
+		}
+	}
 
-    // Se déplace vers la prochaine position
-    public void GoToNextPosition()
-    {
-        EnemiesFind = false;
-        
-        if (destination[0].GetTransform())
-        {
-            SetDestination(destination[0].GetTransform());
-            MoveToThisPoint(true);
-        }
-    }
+	// Se déplace vers la prochaine position
+	public void GoToNextPosition()
+	{
+		EnemiesFind = false;
+		
+		if (destination[0].GetTransform())
+		{
+			SetDestination(destination[0].GetTransform());
+			MoveToThisPoint(true);
+		}
+	}
 
 
-    public void FindEnemies()
-    {
-        GameObject[] _enemies;
-        _enemies = GameObject.FindGameObjectsWithTag("Enemy");
+	public void FindEnemies()
+	{
+		GameObject[] _enemies;
+		_enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
-        Enemies = new List<GameObject>();
-        
-        for (int i = 0; i < _enemies.Length; i++)
-        {
-            Enemies.Add(_enemies[i]);
-        }
-        EnemiesFind = true;
+		Enemies = new List<GameObject>();
+		
+		for (int i = 0; i < _enemies.Length; i++)
+		{
+			Enemies.Add(_enemies[i]);
+		}
+		EnemiesFind = true;
 
-        //Player targeting enemies
-        for (int i = 0; i < Enemies.Count; i++)
-        {
-            try
-            {
-                Enemies[i].GetComponent<TargetManager>().Targeting();
-            }
-            catch
-            {
-                Debug.Log("prooblem");
-            }
-        }
-    }
+		//Player targeting enemies
+		for (int i = 0; i < Enemies.Count; i++)
+		{
+			try
+			{
+				Enemies[i].GetComponent<TargetManager>().Targeting();
+			}
+			catch
+			{
+				Debug.Log("prooblem");
+			}
+		}
+	}
 
-    //return a target
-    GameObject ChooseTarget(int _direction)
-    {
-        GameObject _enemyCloser = null;
-        Vector3 _relativeCloser = Vector3.zero;
-        for (int i = 0; i < Enemies.Count; i++)
-        {
-            //si l'enemi est mort on l'enleve de la liste
-            if (!Enemies[i])
-            {
-                Enemies.Remove(Enemies[i]);
-                
-            }
+	//return a target
+	GameObject ChooseTarget(int _direction)
+	{
+		GameObject _enemyCloser = null;
+		Vector3 _relativeCloser = Vector3.zero;
+		for (int i = 0; i < Enemies.Count; i++)
+		{
+			//si l'enemi est mort on l'enleve de la liste
+			if (!Enemies[i])
+			{
+				Enemies.Remove(Enemies[i]);
+				
+			}
 
-            //si il est different de la cible on test ou il est 
-            else if (Enemies[i] != target)
-            {
-                Vector3 relativePoint = transform.InverseTransformPoint(Enemies[i].transform.position);
-                //si le joueur a choisi gauche
-                if (relativePoint.x < 0.0f && _direction == -1)
-                {
-                    //on prend l'ennemi le plus proche a gauche
-                    if (_relativeCloser.x < relativePoint.x || _relativeCloser.x == 0.0f)
-                    {
-                        _relativeCloser = relativePoint;
-                        _enemyCloser = Enemies[i];
-                    }
+			//si il est different de la cible on test ou il est 
+			else if (Enemies[i] != target)
+			{
+				Vector3 relativePoint = transform.InverseTransformPoint(Enemies[i].transform.position);
+				//si le joueur a choisi gauche
+				if (relativePoint.x < 0.0f && _direction == -1)
+				{
+					//on prend l'ennemi le plus proche a gauche
+					if (_relativeCloser.x < relativePoint.x || _relativeCloser.x == 0.0f)
+					{
+						_relativeCloser = relativePoint;
+						_enemyCloser = Enemies[i];
+					}
 
-                }
+				}
 
-                //si le joueur a choisi droite
-                if (relativePoint.x > 0.0f && _direction == 1)
-                {
-                    //on prend l'ennemi le plus proche a droite
-                    if (_relativeCloser.x > relativePoint.x || _relativeCloser.x == 0.0f)
-                    {
-                        _relativeCloser = relativePoint;
-                        _enemyCloser = Enemies[i];
-                    }
-                }
-            }
-        }
+				//si le joueur a choisi droite
+				if (relativePoint.x > 0.0f && _direction == 1)
+				{
+					//on prend l'ennemi le plus proche a droite
+					if (_relativeCloser.x > relativePoint.x || _relativeCloser.x == 0.0f)
+					{
+						_relativeCloser = relativePoint;
+						_enemyCloser = Enemies[i];
+					}
+				}
+			}
+		}
 
-        // Si on a pas trouvé d'ennemis on refait avec l'autre direction
-        if (!_enemyCloser)
-        {
-            try
-            {
-                if (_direction == 1)
-                {
-                    _enemyCloser = ChooseTarget(-1);
-                }
-                else
-                {
-                    _enemyCloser = ChooseTarget(1);
-                }
-            }
-            catch
-            {
+		// Si on a pas trouvé d'ennemis on refait avec l'autre direction
+		if (!_enemyCloser)
+		{
+			try
+			{
+				if (_direction == 1)
+				{
+					_enemyCloser = ChooseTarget(-1);
+				}
+				else
+				{
+					_enemyCloser = ChooseTarget(1);
+				}
+			}
+			catch
+			{
 
-            }
-        }
-        if (!_enemyCloser)
-        {
-            return target;
-        }
-        return _enemyCloser;
-    }
+			}
+		}
+		if (!_enemyCloser)
+		{
+			return target;
+		}
+		return _enemyCloser;
+	}
 
-    IEnumerator WaitCovered()
-    {
-        //switch cam position
-        CamMngr.SwitchPosCam("TPS");
+	IEnumerator WaitCovered()
+	{
+		//switch cam position
+		CamMngr.SwitchPosCam("TPS");
 
-        yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(2);
 
-        SwitchState(Etape.GoUncovered);
+		SwitchState(Etape.GoUncovered);
 
-        //switch cam position
-        CamMngr.SwitchPosCam("FPS");
+		//switch cam position
+		CamMngr.SwitchPosCam("FPS");
 
-        // Si il n'y a pas de point à découvert on ne bouge pas
-        if (actualPosition.ptDecouvert != null)
-        {
-            // Se déplace vers le point à découvert
-            this.SetDestination(actualPosition.ptDecouvert.transform);
-            MoveToThisPoint(false);
-        }
-    }
+		// Si il n'y a pas de point à découvert on ne bouge pas
+		if (actualPosition.ptDecouvert != null)
+		{
+			// Se déplace vers le point à découvert
+			this.SetDestination(actualPosition.ptDecouvert.transform);
+			MoveToThisPoint(false);
+		}
+	}
 
-    IEnumerator Wait2Second()
-    {
-        haveWaited2Sec = false;
+	IEnumerator Wait2Second()
+	{
+		haveWaited2Sec = false;
 
-        yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(2);
 
-        haveWaited2Sec = true;
-    }
+		haveWaited2Sec = true;
+	}
 
-    IEnumerator WaitXSecond()
-    {
-        haveWaitedXSec = false;
+	IEnumerator WaitXSecond()
+	{
+		haveWaitedXSec = false;
 
-        yield return new WaitForSeconds(X);
+		yield return new WaitForSeconds(X);
 
-        haveWaitedXSec = true;
-    }
+		haveWaitedXSec = true;
+	}
 }
 
