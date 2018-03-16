@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 9404141}
   m_Layer: 0
   m_Name: Entrance
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -587,7 +587,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 148408968}
   m_LocalRotation: {x: 0, y: -0.7677246, z: 0, w: 0.64078}
-  m_LocalPosition: {x: 17.44, y: 0.59, z: 10.89}
+  m_LocalPosition: {x: 21.7, y: 0.59, z: 11.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1298897878}
@@ -622,6 +622,7 @@ MonoBehaviour:
   checkPoints: []
   prefabEnemy: {fileID: 0}
   ptDecouvert: {fileID: 0}
+  enemyLife: 0
   CamTactic: {fileID: 0}
 --- !u!23 &148408972
 MeshRenderer:
@@ -1109,7 +1110,7 @@ GameObject:
   - component: {fileID: 229087734}
   m_Layer: 0
   m_Name: Wall2_C3
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -1568,7 +1569,7 @@ GameObject:
   - component: {fileID: 360153128}
   m_Layer: 0
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1760,7 +1761,7 @@ GameObject:
   - component: {fileID: 372401537}
   m_Layer: 0
   m_Name: Cube (4)
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1883,7 +1884,7 @@ GameObject:
   - component: {fileID: 389729030}
   m_Layer: 0
   m_Name: C2
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -2315,7 +2316,7 @@ GameObject:
   - component: {fileID: 459203900}
   m_Layer: 0
   m_Name: Cube (5)
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2842,7 +2843,7 @@ GameObject:
   - component: {fileID: 525260425}
   m_Layer: 0
   m_Name: Wall3_C2
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -3314,7 +3315,7 @@ GameObject:
   - component: {fileID: 557004811}
   m_Layer: 0
   m_Name: Wall1_C1 (2)
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -3542,7 +3543,7 @@ GameObject:
   - component: {fileID: 594284759}
   m_Layer: 0
   m_Name: Back Wall
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -3832,7 +3833,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 615696013}
   m_LocalRotation: {x: -0, y: -0.99867487, z: 0, w: -0.051464297}
-  m_LocalPosition: {x: 0.78, y: -0.32000005, z: 0.56}
+  m_LocalPosition: {x: 0.71, y: -0.32000005, z: 1.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1423077522}
@@ -4079,7 +4080,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 631620751}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5499878, z: 1}
+  m_LocalPosition: {x: 0, y: 0.5500183, z: 1}
   m_LocalScale: {x: 0.0015069694, y: 0.0015069694, z: 0.0015069694}
   m_Children:
   - {fileID: 199316346}
@@ -4656,6 +4657,7 @@ MonoBehaviour:
   checkPoints: []
   prefabEnemy: {fileID: 0}
   ptDecouvert: {fileID: 0}
+  enemyLife: 0
   CamTactic: {fileID: 0}
 --- !u!23 &700207366
 MeshRenderer:
@@ -4930,7 +4932,7 @@ GameObject:
   - component: {fileID: 724814886}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5727,6 +5729,7 @@ MonoBehaviour:
   checkPoints: []
   prefabEnemy: {fileID: 0}
   ptDecouvert: {fileID: 0}
+  enemyLife: 0
   CamTactic: {fileID: 0}
 --- !u!23 &784990724
 MeshRenderer:
@@ -5797,7 +5800,7 @@ GameObject:
   - component: {fileID: 787453857}
   m_Layer: 0
   m_Name: Mesh
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6272,7 +6275,7 @@ GameObject:
   - component: {fileID: 901656429}
   m_Layer: 0
   m_Name: Wall4_C2
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -6361,7 +6364,7 @@ GameObject:
   - component: {fileID: 942429650}
   m_Layer: 0
   m_Name: Wall4_C6
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -6563,7 +6566,7 @@ GameObject:
   - component: {fileID: 964406628}
   m_Layer: 0
   m_Name: C3
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -6652,7 +6655,7 @@ GameObject:
   - component: {fileID: 965754230}
   m_Layer: 0
   m_Name: Wall2_C2
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -6897,7 +6900,7 @@ GameObject:
   - component: {fileID: 1006813093}
   m_Layer: 0
   m_Name: Wall4_C4
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -7019,7 +7022,7 @@ GameObject:
   - component: {fileID: 1018524859}
   m_Layer: 0
   m_Name: Wall1_C3
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -7381,7 +7384,7 @@ GameObject:
   - component: {fileID: 1058493080}
   m_Layer: 0
   m_Name: Wall1_Tuto
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -7779,6 +7782,7 @@ MonoBehaviour:
   prefabEnemy: {fileID: 1909649426082618, guid: ff1ff9f1a71638d4cb107340e22217e6,
     type: 2}
   ptDecouvert: {fileID: 0}
+  enemyLife: 3
   CamTactic: {fileID: 732305872}
 --- !u!65 &1159388037
 BoxCollider:
@@ -7865,6 +7869,7 @@ MonoBehaviour:
   prefabEnemy: {fileID: 1909649426082618, guid: ff1ff9f1a71638d4cb107340e22217e6,
     type: 2}
   ptDecouvert: {fileID: 1076434652}
+  enemyLife: 9
   CamTactic: {fileID: 1899674261}
 --- !u!65 &1174203222
 BoxCollider:
@@ -8120,7 +8125,7 @@ GameObject:
   - component: {fileID: 1205679689}
   m_Layer: 0
   m_Name: C6
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -8482,6 +8487,7 @@ MonoBehaviour:
   prefabEnemy: {fileID: 1909649426082618, guid: ff1ff9f1a71638d4cb107340e22217e6,
     type: 2}
   ptDecouvert: {fileID: 1962765876}
+  enemyLife: 6
   CamTactic: {fileID: 617279644}
 --- !u!65 &1231398260
 BoxCollider:
@@ -8530,7 +8536,7 @@ Transform:
   - {fileID: 1840563458}
   - {fileID: 1837664477}
   m_Father: {fileID: 1723374569}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1283125318
 Rigidbody:
@@ -8567,6 +8573,7 @@ MonoBehaviour:
   prefabEnemy: {fileID: 1909649426082618, guid: ff1ff9f1a71638d4cb107340e22217e6,
     type: 2}
   ptDecouvert: {fileID: 0}
+  enemyLife: 8
   CamTactic: {fileID: 1837664481}
 --- !u!65 &1283125320
 BoxCollider:
@@ -8855,6 +8862,7 @@ MonoBehaviour:
   checkPoints: []
   prefabEnemy: {fileID: 0}
   ptDecouvert: {fileID: 0}
+  enemyLife: 0
   CamTactic: {fileID: 0}
 --- !u!23 &1316910542
 MeshRenderer:
@@ -8926,7 +8934,7 @@ GameObject:
   - component: {fileID: 1329812943}
   m_Layer: 0
   m_Name: Up (2)
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -9106,7 +9114,7 @@ GameObject:
   - component: {fileID: 1332836296}
   m_Layer: 0
   m_Name: C4
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -9319,7 +9327,7 @@ Transform:
   - {fileID: 204570955}
   - {fileID: 369394386}
   m_Father: {fileID: 1723374569}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1357739034
 Rigidbody:
@@ -9356,6 +9364,7 @@ MonoBehaviour:
   prefabEnemy: {fileID: 1909649426082618, guid: ff1ff9f1a71638d4cb107340e22217e6,
     type: 2}
   ptDecouvert: {fileID: 0}
+  enemyLife: 7
   CamTactic: {fileID: 369394387}
 --- !u!65 &1357739036
 BoxCollider:
@@ -9384,7 +9393,7 @@ GameObject:
   - component: {fileID: 1369381337}
   m_Layer: 0
   m_Name: Wall3_Tuto
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -9523,6 +9532,7 @@ MonoBehaviour:
   checkPoints: []
   prefabEnemy: {fileID: 0}
   ptDecouvert: {fileID: 0}
+  enemyLife: 0
   CamTactic: {fileID: 0}
 --- !u!23 &1374498563
 MeshRenderer:
@@ -9758,6 +9768,7 @@ MonoBehaviour:
   prefabEnemy: {fileID: 1909649426082618, guid: ff1ff9f1a71638d4cb107340e22217e6,
     type: 2}
   ptDecouvert: {fileID: 0}
+  enemyLife: 5
   CamTactic: {fileID: 567493504}
 --- !u!65 &1402731556
 BoxCollider:
@@ -9966,6 +9977,7 @@ MonoBehaviour:
   prefabEnemy: {fileID: 1909649426082618, guid: ff1ff9f1a71638d4cb107340e22217e6,
     type: 2}
   ptDecouvert: {fileID: 1920770169}
+  enemyLife: 2
   CamTactic: {fileID: 633662234}
 --- !u!65 &1423077525
 BoxCollider:
@@ -9994,7 +10006,7 @@ GameObject:
   - component: {fileID: 1444441343}
   m_Layer: 0
   m_Name: Wall1_C5
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -10083,7 +10095,7 @@ GameObject:
   - component: {fileID: 1482715903}
   m_Layer: 0
   m_Name: Wall3_C6
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -10261,7 +10273,7 @@ GameObject:
   - component: {fileID: 1498138400}
   m_Layer: 0
   m_Name: Amphi walkable (1)
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -10887,6 +10899,7 @@ MonoBehaviour:
   checkPoints: []
   prefabEnemy: {fileID: 0}
   ptDecouvert: {fileID: 0}
+  enemyLife: 0
   CamTactic: {fileID: 0}
 --- !u!23 &1600852773
 MeshRenderer:
@@ -11102,6 +11115,7 @@ MonoBehaviour:
   checkPoints: []
   prefabEnemy: {fileID: 0}
   ptDecouvert: {fileID: 0}
+  enemyLife: 0
   CamTactic: {fileID: 0}
 --- !u!23 &1651933216
 MeshRenderer:
@@ -11355,6 +11369,7 @@ MonoBehaviour:
   prefabEnemy: {fileID: 1909649426082618, guid: ff1ff9f1a71638d4cb107340e22217e6,
     type: 2}
   ptDecouvert: {fileID: 1304473600}
+  enemyLife: 1
   CamTactic: {fileID: 866422069}
 --- !u!65 &1683358255
 BoxCollider:
@@ -11522,6 +11537,7 @@ MonoBehaviour:
   checkPoints: []
   prefabEnemy: {fileID: 0}
   ptDecouvert: {fileID: 0}
+  enemyLife: 0
   CamTactic: {fileID: 0}
 --- !u!23 &1699414447
 MeshRenderer:
@@ -11682,7 +11698,7 @@ GameObject:
   - component: {fileID: 1717235496}
   m_Layer: 0
   m_Name: Wall3_C4
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -11790,8 +11806,8 @@ Transform:
   - {fileID: 1988670227}
   - {fileID: 639833770}
   - {fileID: 1231398257}
-  - {fileID: 1357739033}
   - {fileID: 1283125317}
+  - {fileID: 1357739033}
   - {fileID: 1174203219}
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -11810,7 +11826,7 @@ GameObject:
   - component: {fileID: 1745397607}
   m_Layer: 0
   m_Name: Up
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967263
@@ -12052,7 +12068,7 @@ GameObject:
   - component: {fileID: 1772038162}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12947,6 +12963,7 @@ MonoBehaviour:
   checkPoints: []
   prefabEnemy: {fileID: 0}
   ptDecouvert: {fileID: 0}
+  enemyLife: 0
   CamTactic: {fileID: 0}
 --- !u!23 &1905150457
 MeshRenderer:
@@ -13068,6 +13085,7 @@ MonoBehaviour:
   checkPoints: []
   prefabEnemy: {fileID: 0}
   ptDecouvert: {fileID: 0}
+  enemyLife: 0
   CamTactic: {fileID: 0}
 --- !u!23 &1906290764
 MeshRenderer:
@@ -13815,6 +13833,7 @@ MonoBehaviour:
   prefabEnemy: {fileID: 1909649426082618, guid: ff1ff9f1a71638d4cb107340e22217e6,
     type: 2}
   ptDecouvert: {fileID: 1147038358}
+  enemyLife: 4
   CamTactic: {fileID: 959706757}
 --- !u!65 &1988670230
 BoxCollider:
@@ -13964,7 +13983,7 @@ GameObject:
   - component: {fileID: 2030534884}
   m_Layer: 0
   m_Name: C5
-  m_TagString: Untagged
+  m_TagString: Mur
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -14103,6 +14122,7 @@ MonoBehaviour:
   checkPoints: []
   prefabEnemy: {fileID: 0}
   ptDecouvert: {fileID: 303789960}
+  enemyLife: 0
   CamTactic: {fileID: 0}
 --- !u!23 &2034917797
 MeshRenderer:
@@ -14344,6 +14364,54 @@ Prefab:
       value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 1341248880138830, guid: 37b0e3a62c5e59c4aa52f46db1b5fa4c, type: 2}
+      propertyPath: m_TagString
+      value: Mur
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498325260778740, guid: 37b0e3a62c5e59c4aa52f46db1b5fa4c, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1756235204763478, guid: 37b0e3a62c5e59c4aa52f46db1b5fa4c, type: 2}
+      propertyPath: m_TagString
+      value: Mur
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460146311594946, guid: 37b0e3a62c5e59c4aa52f46db1b5fa4c, type: 2}
+      propertyPath: m_TagString
+      value: Mur
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082749580857130, guid: 37b0e3a62c5e59c4aa52f46db1b5fa4c, type: 2}
+      propertyPath: m_TagString
+      value: Mur
+      objectReference: {fileID: 0}
+    - target: {fileID: 1856311853445344, guid: 37b0e3a62c5e59c4aa52f46db1b5fa4c, type: 2}
+      propertyPath: m_TagString
+      value: Mur
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263437672071970, guid: 37b0e3a62c5e59c4aa52f46db1b5fa4c, type: 2}
+      propertyPath: m_TagString
+      value: Mur
+      objectReference: {fileID: 0}
+    - target: {fileID: 1949588169819280, guid: 37b0e3a62c5e59c4aa52f46db1b5fa4c, type: 2}
+      propertyPath: m_TagString
+      value: Mur
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333554180285874, guid: 37b0e3a62c5e59c4aa52f46db1b5fa4c, type: 2}
+      propertyPath: m_TagString
+      value: Mur
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410825544119238, guid: 37b0e3a62c5e59c4aa52f46db1b5fa4c, type: 2}
+      propertyPath: m_TagString
+      value: Mur
+      objectReference: {fileID: 0}
+    - target: {fileID: 1154300622941904, guid: 37b0e3a62c5e59c4aa52f46db1b5fa4c, type: 2}
+      propertyPath: m_TagString
+      value: Mur
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105728676249108, guid: 37b0e3a62c5e59c4aa52f46db1b5fa4c, type: 2}
+      propertyPath: m_TagString
+      value: Mur
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885501108105188, guid: 37b0e3a62c5e59c4aa52f46db1b5fa4c, type: 2}
       propertyPath: m_TagString
       value: Mur
       objectReference: {fileID: 0}

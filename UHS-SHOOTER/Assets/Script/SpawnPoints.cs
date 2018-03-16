@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class SpawnPoints : MonoBehaviour {
     public CheckPoint[] checkPoints;
     public GameObject prefabEnemy;
     public GameObject ptDecouvert;
+    public int enemyLife;
     private int EnemiesAlive = 0;
     private Player playerScript;
     public Camera CamTactic;
@@ -16,12 +18,13 @@ public class SpawnPoints : MonoBehaviour {
     void Start ()
     {
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
+    
+    // Update is called once per frame
+    void Update ()
+    {
+        
+    }
 
     // lorsqu'un objet entre en collision avec le spawnpoint
     void OnTriggerEnter(Collider other)
@@ -36,15 +39,22 @@ public class SpawnPoints : MonoBehaviour {
                 playerScript.CamMngr.SetTPSCam(CamTactic.transform);
             }
 
+            // Récupère le temps depuis le début du jeu et gère la vie des ennemis
+            int lifeCalculated = GetTimeAndSetEnemyLife();
+
+            Enemy scriptEnemy;
+            HealthManager scriptHealthManager;
+
             // Fais spawn des ennemis
             for (int i = 0; i < spawnPoints.Length; i++)
             {
                 GameObject _enemy = Instantiate(prefabEnemy, spawnPoints[i].transform.position, Quaternion.identity);
                 _enemy.name = "Enemy" + i;
-                Enemy scriptEnemy =_enemy.GetComponent<Enemy>();
-
+                scriptEnemy =_enemy.GetComponent<Enemy>();
+                scriptHealthManager = _enemy.GetComponent<HealthManager>();
 
                 
+                scriptHealthManager.MaxHealth = enemyLife;
                 scriptEnemy.spawnPointsScript = this;
                 scriptEnemy.SetDestination(checkPoints[i].transform);
                 scriptEnemy.checkPoint = checkPoints[i];
@@ -56,10 +66,23 @@ public class SpawnPoints : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Récupère le temps depuis le début de la partie, et calcule la vie des 
+    /// </summary>
+    /// <returns></returns>
+    private int GetTimeAndSetEnemyLife()
+    {
+        //throw new NotImplementedException();
+
+        return 0;
+    }
+
+    /// <summary>
+    /// Si un enemie a été tué
+    /// </summary>
     public void EnemyDied()
     {
         EnemiesAlive--;
-        //if (playerScript.TutoMngr.TutoOn) playerScript.TutoMngr.Next();
         
         if ((EnemiesAlive == 0) && (playerScript))
         {

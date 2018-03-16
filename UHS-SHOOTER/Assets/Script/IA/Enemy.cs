@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,7 +21,6 @@ public class Enemy : Humanoid {
 
 		agent.enabled = true;
 		MoveToThisPoint(true);
-
 	}
 	
 	// Update is called once per frame
@@ -100,7 +100,7 @@ public class Enemy : Humanoid {
 		}
 	}
 
-	void OnDestroy()
+    void OnDestroy()
 	{
 		if (spawnPointsScript) spawnPointsScript.EnemyDied();
 	}

@@ -7,8 +7,8 @@ public class Projectile : MonoBehaviour {
     private const int speed = 50; 
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         //Détruit le projectile après 10 secondes s'il ne rencontre pas d'obstacles
         Destroy(gameObject, 10);
     }
@@ -18,9 +18,11 @@ public class Projectile : MonoBehaviour {
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
-
+    
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other.tag);
+
         if (other.tag == "CheckPoint" || other.tag == "Trigger")
         {
 
@@ -40,7 +42,6 @@ public class Projectile : MonoBehaviour {
         }
         else
         {
-            //Destroy(gameObject);
         }
     }
 }

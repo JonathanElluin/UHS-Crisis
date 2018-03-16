@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HealthManager : MonoBehaviour {
 
     public int MaxHealth;
-    int LifePoints;
+    private int LifePoints;
     public bool isAlive = true;
     public Scrollbar LifeBar;
 
