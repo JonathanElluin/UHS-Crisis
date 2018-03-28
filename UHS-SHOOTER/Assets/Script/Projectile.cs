@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour {
+
     public int damages;
-    private const int speed = 50; 
+    private const int speed = 50;
+
+    public GameObject _parent;
 
 
     // Use this for initialization
@@ -18,9 +21,21 @@ public class Projectile : MonoBehaviour {
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
-    
+
+    public void SetParent(GameObject parent)
+    {
+        _parent = parent;
+    }
+
+
     void OnTriggerEnter(Collider other)
     {
+        // Si le missile a touché le personnage qui l'a tiré il ne prends pas de dégats
+        if (other.transform == _parent.transform)
+        {
+            return;
+        }
+
         Debug.Log(other.tag);
 
         if (other.tag == "CheckPoint" || other.tag == "Trigger")
@@ -40,6 +55,14 @@ public class Projectile : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+
+        // Si on touche le boss
+        else if(other.tag == "Boss")
+        {
+            other.gameObject.GetComponent<HealthManager>().TakeDammage(damages);
+            Destroy(gameObject);
+        }
+
         else
         {
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.AI;
@@ -228,19 +229,31 @@ public class Player : Humanoid
         }
     }
 
-
+    /// <summary>
+    /// Cherche un ennemi
+    /// </summary>
     public void FindEnemies()
     {
-        GameObject[] _enemies;
-        _enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
+        GameObject[] enemies;
         Enemies = new List<GameObject>();
+
+
+        // On cherche les enemis
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         
-        for (int i = 0; i < _enemies.Length; i++)
+        for (int i = 0; i < enemies.Length; i++)
         {
-            Enemies.Add(_enemies[i]);
+            Enemies.Add(enemies[i]);
         }
         EnemiesFind = true;
+
+        GameObject boss = GameObject.FindGameObjectWithTag("Boss");
+
+        // On cherche le boss s'il y en a un
+        if (boss)
+        {
+            Enemies.Add(boss);
+        }
 
         //Player targeting enemies
         for (int i = 0; i < Enemies.Count; i++)
@@ -282,7 +295,6 @@ public class Player : Humanoid
                         _relativeCloser = relativePoint;
                         _enemyCloser = Enemies[i];
                     }
-
                 }
 
                 //si le joueur a choisi droite

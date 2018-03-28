@@ -10,7 +10,7 @@ public class HealthManager : MonoBehaviour {
     public bool isAlive = true;
     public Scrollbar LifeBar;
 
-    public GameObject prefabConfetis;
+    public GameObject prefabConfettis;
 
 	// Use this for initialization
 	void Start () {
@@ -28,7 +28,9 @@ public class HealthManager : MonoBehaviour {
         {
             isAlive = false;
             Destroy(gameObject);
-            Instantiate(prefabConfetis, transform.position, Quaternion.identity);
+
+            // Fais apparaitre des confettis qui disparaitrons apres 5 secondes
+            Destroy(Instantiate(prefabConfettis, transform.position, Quaternion.identity), 5f);
         }
     }
 }

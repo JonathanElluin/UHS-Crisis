@@ -25,12 +25,28 @@ public class Humanoid : MonoBehaviour {
     public enum Etape { Tuto, Moving, Arrived, GoCovered, Covered, GoUncovered , Uncovered }
     public Etape HumanState;
 
+    private float bulletSpawnDistance = 0;
+
     // Use this for initialization
     public void Init ()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
         healthManager = gameObject.GetComponent<HealthManager>();
         col = gameObject.GetComponent<Collider>();
+
+        /*// Le boss doit tirer de plus loin car il est plus gros
+        if (transform.tag.Contains("Boss"))
+        {
+            bulletSpawnDistance = 3f;
+        }
+        else
+        {
+            bulletSpawnDistance = 2.5f;
+        }
+        
+         DESACTIVATION DE L'AVANCEE DE LA BALLE : Le projectile apparait maintenant dans le personnage, sans lui faire de dégats
+         
+         */
     }
 
     /// <summary>
@@ -71,11 +87,13 @@ public class Humanoid : MonoBehaviour {
     public void Fire()
     {
         Vector3 positionOutsideObject = transform.position;
-        positionOutsideObject += 2.5f * (transform.forward);
+        positionOutsideObject += bulletSpawnDistance * (transform.forward);
         positionOutsideObject += 0.5f * (transform.up);
 
-        GameObject _projectil = Instantiate(Projectile, positionOutsideObject, transform.rotation);
-        _projectil.GetComponent<Projectile>().damages = damages;
+        GameObject _projectile = Instantiate(Projectile, positionOutsideObject, transform.rotation);
+
+        _projectile.GetComponent<Projectile>().SetParent(this.gameObject);
+        _projectile.GetComponent<Projectile>().damages = damages;
     }
 
 

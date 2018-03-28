@@ -39,9 +39,6 @@ public class SpawnPoints : MonoBehaviour {
                 playerScript.CamMngr.SetTPSCam(CamTactic.transform);
             }
 
-            // Récupère le temps depuis le début du jeu et gère la vie des ennemis
-            int lifeCalculated = GetTimeAndSetEnemyLife();
-
             Enemy scriptEnemy;
             HealthManager scriptHealthManager;
 
@@ -64,17 +61,6 @@ public class SpawnPoints : MonoBehaviour {
             
             gameObject.GetComponent<Collider>().enabled = false;
         }
-    }
-
-    /// <summary>
-    /// Récupère le temps depuis le début de la partie, et calcule la vie des 
-    /// </summary>
-    /// <returns></returns>
-    private int GetTimeAndSetEnemyLife()
-    {
-        //throw new NotImplementedException();
-
-        return 0;
     }
 
     /// <summary>
