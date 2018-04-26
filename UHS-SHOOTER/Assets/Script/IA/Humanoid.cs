@@ -22,7 +22,7 @@ public class Humanoid : MonoBehaviour {
     Transform Destination;
 
     //State
-    public enum Etape { Tuto, Moving, Arrived, GoCovered, Covered, GoUncovered , Uncovered }
+    public enum Etape { Tuto, Moving, Arrived, GoCovered, Covered, GoUncovered, Uncovered }
     public Etape HumanState;
 
     private float bulletSpawnDistance = 0;
@@ -122,6 +122,11 @@ public class Humanoid : MonoBehaviour {
     {
         if (Destination)
         {
+            if (!agent)
+            {
+                agent = gameObject.GetComponent<NavMeshAgent>();
+            }
+
             agent.isStopped = false;
             agent.SetDestination(Destination.position);
 

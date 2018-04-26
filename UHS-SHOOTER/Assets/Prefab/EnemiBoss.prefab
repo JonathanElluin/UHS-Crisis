@@ -289,7 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destination: []
   Projectile: {fileID: 1145037282955554, guid: d9d05ffbe1692d7498fb799360c6c23a, type: 2}
-  damages: 1
+  damages: 3
   agent: {fileID: 0}
   col: {fileID: 0}
   target: {fileID: 0}

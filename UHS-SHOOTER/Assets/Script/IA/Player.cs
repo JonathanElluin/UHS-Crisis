@@ -13,6 +13,12 @@ public class Player : Humanoid
     private CheckPoint actualPosition;
     private const int coverPos = 5;
     private KeyCode btnTir = KeyCode.Space;
+    private KeyCode btnLeft = KeyCode.LeftArrow;
+    private KeyCode btnDown = KeyCode.DownArrow;
+    private KeyCode btnRight = KeyCode.RightArrow;
+    private KeyCode btnUp = KeyCode.UpArrow;
+
+
     public CamManager CamMngr;
 
     public GameObject tutoImage;
@@ -32,6 +38,7 @@ public class Player : Humanoid
     private bool haveWaited2Sec = false;
     private bool haveWaitedXSec = false;
     private float X;
+    private DateTime gameStartTime = new DateTime();
 
     // Use this for initialization
     void Start()
@@ -48,6 +55,8 @@ public class Player : Humanoid
         DeactivateMeshRenderer("PtDecouvert");
         DeactivateMeshRenderer("CheckPoint");
         DeactivateMeshRenderer("Respawn");
+
+        gameStartTime = DateTime.Now;
     }
 
     private void DeactivateMeshRenderer(string tag)
@@ -183,25 +192,25 @@ public class Player : Humanoid
                 {
                     LookToTarget();
 
-                    if (Input.GetKeyDown(btnTir))
+                    if (Input.GetButtonDown("Fire"))
                     {
                         Fire();
                     }
                 }
                 
                 //Choose Enemy
-                if (Input.GetKeyDown(KeyCode.LeftArrow))
+                if (Input.GetKeyDown(btnLeft))
                 {
                     target = ChooseTarget(-1);
                 }
-                if (Input.GetKeyDown(KeyCode.RightArrow))
+                if (Input.GetKeyDown(btnRight))
                 {
                     target = ChooseTarget(1);
                 }
 
                
                 // Si on peut se mettre à couvert et qu'il nous reste des possibilitées de se cacher on y va 
-                if (Input.GetKeyDown(KeyCode.DownArrow) && actualPosition.ptDecouvert != null && getCoveredTokens > 0)
+                if (Input.GetButtonDown("Down") && actualPosition.ptDecouvert != null && getCoveredTokens > 0)
                 {
                     getCoveredTokens--;
                     col.enabled = false;
@@ -214,6 +223,14 @@ public class Player : Humanoid
 
                 break;
         }
+    }
+
+    /// <summary>
+    ///  Renvoie le temps depuis lequel le jeu a démarré
+    /// </summary>
+    internal TimeSpan GetTimeElapsed()
+    {
+        return (DateTime.Now - gameStartTime);
     }
 
     // Se déplace vers la prochaine position
@@ -272,8 +289,11 @@ public class Player : Humanoid
     //return a target
     GameObject ChooseTarget(int _direction)
     {
+        FindEnemies();
+
         GameObject _enemyCloser = null;
         Vector3 _relativeCloser = Vector3.zero;
+
         for (int i = 0; i < Enemies.Count; i++)
         {
             //si l'enemi est mort on l'enleve de la liste
@@ -329,6 +349,7 @@ public class Player : Humanoid
 
             }
         }
+
         if (!_enemyCloser)
         {
             return target;

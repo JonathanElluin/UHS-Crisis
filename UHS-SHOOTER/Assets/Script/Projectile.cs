@@ -31,7 +31,7 @@ public class Projectile : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         // Si le missile a touché le personnage qui l'a tiré il ne prends pas de dégats
-        if (other.transform == _parent.transform)
+        if (other.transform == _parent.transform || !_parent)
         {
             return;
         }
@@ -46,7 +46,7 @@ public class Projectile : MonoBehaviour {
         // If the projectile hits an enemy or the player, it deals damages and disappear
         else if (other.tag == "Enemy" || other.tag == "Player")
         {
-            other.gameObject.GetComponent<HealthManager>().TakeDammage(damages);
+            other.gameObject.GetComponent<HealthManager>().TakeDammage(damages, other.gameObject);
             Destroy(gameObject);
         }
 
@@ -59,7 +59,7 @@ public class Projectile : MonoBehaviour {
         // Si on touche le boss
         else if(other.tag == "Boss")
         {
-            other.gameObject.GetComponent<HealthManager>().TakeDammage(damages);
+            other.gameObject.GetComponent<HealthManager>().TakeDammage(damages, other.gameObject);
             Destroy(gameObject);
         }
 

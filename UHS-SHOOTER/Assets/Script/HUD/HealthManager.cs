@@ -12,15 +12,15 @@ public class HealthManager : MonoBehaviour {
 
     public GameObject prefabConfettis;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         LifePoints = MaxHealth;
-	}
-	
+    }
+    
 
-    public void TakeDammage(int _dammage)
+    public void TakeDammage(int damages, GameObject character)
     {
-        LifePoints -= _dammage;
+        LifePoints -= damages;
         LifeBar.size = (float)LifePoints * 1 / MaxHealth;
 
         // Si le personnage n'a plus de points de vie
@@ -31,6 +31,12 @@ public class HealthManager : MonoBehaviour {
 
             // Fais apparaitre des confettis qui disparaitrons apres 5 secondes
             Destroy(Instantiate(prefabConfettis, transform.position, Quaternion.identity), 5f);
+        }
+
+        // Si c'est le boss
+        if (character.tag == "Boss")
+        {
+            character.GetComponent<Enemy>().BossTookDamages(damages);
         }
     }
 }
