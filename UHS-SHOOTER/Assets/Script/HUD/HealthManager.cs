@@ -12,9 +12,13 @@ public class HealthManager : MonoBehaviour {
 
     public GameObject prefabConfettis;
 
+    private MeshRenderer pistolMesh;
+
     // Use this for initialization
     void Start () {
         LifePoints = MaxHealth;
+
+        pistolMesh = transform.GetChild(0).gameObject.GetComponent<MeshRenderer>();
     }
     
 
@@ -24,13 +28,19 @@ public class HealthManager : MonoBehaviour {
         LifeBar.size = (float)LifePoints * 1 / MaxHealth;
 
         // Si le personnage n'a plus de points de vie
-        if (LifePoints <= 0)
+        if (LifePoints == 0)
         {
-            isAlive = false;
-            Destroy(gameObject);
+            if (character.tag == "Player")
+            {
+                StartCoroutine("PlayerDied");
+            }
+            else{
+                isAlive = false;
+                Destroy(gameObject);
 
-            // Fais apparaitre des confettis qui disparaitrons apres 5 secondes
-            Destroy(Instantiate(prefabConfettis, transform.position, Quaternion.identity), 5f);
+                // Fais apparaitre des confettis qui disparaitrons apres 5 secondes
+                Destroy(Instantiate(prefabConfettis, transform.position, Quaternion.identity), 5f);
+            }
         }
 
         // Si c'est le boss
@@ -38,5 +48,24 @@ public class HealthManager : MonoBehaviour {
         {
             character.GetComponent<Enemy>().BossTookDamages(damages);
         }
+    }
+
+
+
+    IEnumerator PlayerDied()
+    {
+        yield return new WaitForSeconds(0.05f);
+
+        // Si le CheckPoint n'a pas de point à découvert, on ne se met pas à couvert
+        if (LifePoints < MaxHealth)
+        {
+            LifePoints++;
+            LifeBar.size = (float)LifePoints * 1 / MaxHealth;
+
+            StartCoroutine("PlayerDied");
+        }
+
+        // On fait clignoter le pistolet
+        pistolMesh.enabled = (MaxHealth - LifePoints) % 2 == 0;
     }
 }

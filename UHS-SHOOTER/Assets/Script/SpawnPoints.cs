@@ -23,6 +23,7 @@ public class SpawnPoints : MonoBehaviour {
 
     private int bossDamagesTaken = 0;
     private int minionWavesPassed = 0;
+    private bool waveDied = false;
 
     private bool prefabIsBoss = false;
 
@@ -94,13 +95,20 @@ public class SpawnPoints : MonoBehaviour {
         bossDamagesTaken += damages;
 
         // Si le boss a pris un certain nombre de dégats
-        if (bossDamagesTaken >= (20 * minionWavesPassed + 20) && minionWavesPassed < 3)
+        if (bossDamagesTaken >= (35 * minionWavesPassed + 35))
         {
             minionWavesPassed++;
             scriptEnemy.SetDestination(spawnPoints[0].transform);
             scriptEnemy.MoveToThisPoint(spawnPoints[0].transform);
 
             SpawnMinionsWave();
+            waveDied = false;
+        }
+
+        // Si on a passé les 3 vagues et que le temps est écoulé le boss meurt au prochain coup
+        if (playerScript.GetTimeElapsed().TotalSeconds >= 290 && waveDied)
+        {
+            Destroy(enemy);
         }
     }
 
@@ -157,6 +165,8 @@ public class SpawnPoints : MonoBehaviour {
         {
             scriptEnemy.SetDestination(checkPoints[0].transform);
             scriptEnemy.MoveToThisPoint(checkPoints[0].transform);
+
+            waveDied = true;
         }
 
         Debug.Log(playerScript.GetTimeElapsed());
