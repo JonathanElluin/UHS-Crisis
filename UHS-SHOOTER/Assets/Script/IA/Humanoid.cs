@@ -25,8 +25,6 @@ public class Humanoid : MonoBehaviour {
     public enum Etape { Tuto, Moving, Arrived, GoCovered, Covered, GoUncovered, Uncovered }
     public Etape HumanState;
 
-    private float bulletSpawnDistance = 0;
-
     // Use this for initialization
     public void Init ()
     {
@@ -87,7 +85,7 @@ public class Humanoid : MonoBehaviour {
     public void Fire()
     {
         Vector3 positionOutsideObject = transform.position;
-        positionOutsideObject += bulletSpawnDistance * (transform.forward);
+        positionOutsideObject += transform.forward;
         positionOutsideObject += 0.5f * (transform.up);
 
         GameObject _projectile = Instantiate(Projectile, positionOutsideObject, transform.rotation);
@@ -141,7 +139,7 @@ public class Humanoid : MonoBehaviour {
     // Return true if the destination is reach
     public bool HasArrived()
     {
-        if (agent.remainingDistance <= 0.5f)
+        if (agent.remainingDistance <= 0.5f && !(agent.pathPending))
         {
             agent.isStopped = true;
 

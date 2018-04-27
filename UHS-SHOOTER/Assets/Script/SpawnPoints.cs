@@ -21,6 +21,8 @@ public class SpawnPoints : MonoBehaviour {
     private Player playerScript;
     public Camera CamTactic;
 
+    private int waves = 0;
+
     private int bossDamagesTaken = 0;
     private int minionWavesPassed = 0;
     private bool waveDied = false;
@@ -49,41 +51,49 @@ public class SpawnPoints : MonoBehaviour {
         // Si l'objet est le joueur
         if (other.tag == "Player")
         {
-            if (!playerScript)
-            {
-                //Récupère la position du joueur
-                playerScript = other.gameObject.GetComponent<Player>();
-                playerScript.CamMngr.SetTPSCam(CamTactic.transform);
-
-                target = other.gameObject;
-
-                // Si le prefab a comme tag "Boss" alors c'est le boss
-                if (prefabEnemy.tag == "Boss")
-                {
-                    prefabIsBoss = true;
-                }
-            }
-            
-            HealthManager scriptHealthManager;
-
-            // Fais spawn des ennemis
-            for (int i = 0; i < spawnPoints.Length; i++)
-            {
-                enemy = Instantiate(prefabEnemy, spawnPoints[i].transform.position, Quaternion.identity);
-                enemy.name = "Enemy" + i;
-                scriptEnemy = enemy.GetComponent<Enemy>();
-                scriptHealthManager = enemy.GetComponent<HealthManager>();
-
-                
-                scriptHealthManager.MaxHealth = enemyLife;
-                scriptEnemy.spawnPointsScript = this;
-                scriptEnemy.SetDestination(checkPoints[i].transform);
-                scriptEnemy.checkPoint = checkPoints[i];
-                scriptEnemy.target = target;
-                enemiesAlive++;
-            }
+            SpawnEnemies(other);
             
             gameObject.GetComponent<Collider>().enabled = false;
+        }
+    }
+
+    /// <summary>
+    /// Fais spawn les enemis
+    /// </summary>
+    private void SpawnEnemies(Collider other)
+    {
+        if (!playerScript)
+        {
+            //Récupère la position du joueur
+            playerScript = other.gameObject.GetComponent<Player>();
+            playerScript.CamMngr.SetTPSCam(CamTactic.transform);
+
+            target = other.gameObject;
+
+            // Si le prefab a comme tag "Boss" alors c'est le boss
+            if (prefabEnemy.tag == "Boss")
+            {
+                prefabIsBoss = true;
+            }
+        }
+
+        HealthManager scriptHealthManager;
+        
+        // Fais spawn des ennemis
+        for (int i = 0; i < spawnPoints.Length; i++)
+        {
+            enemy = Instantiate(prefabEnemy, spawnPoints[i].transform.position, Quaternion.identity);
+            enemy.name = "Enemy" + i;
+            scriptEnemy = enemy.GetComponent<Enemy>();
+            scriptHealthManager = enemy.GetComponent<HealthManager>();
+
+
+            scriptHealthManager.MaxHealth = enemyLife;
+            scriptEnemy.spawnPointsScript = this;
+            scriptEnemy.SetDestination(checkPoints[i].transform);
+            scriptEnemy.checkPoint = checkPoints[i];
+            scriptEnemy.target = target;
+            enemiesAlive++;
         }
     }
 
@@ -130,7 +140,7 @@ public class SpawnPoints : MonoBehaviour {
             healthManager = minion.GetComponent<HealthManager>();
 
 
-            healthManager.MaxHealth = 3;
+            healthManager.MaxHealth = 5;
             scriptMinion.spawnPointsScript = this;
             scriptMinion.SetDestination(minionsCheckPoints[i].transform);
             scriptMinion.checkPoint = minionsCheckPoints[i];
@@ -153,11 +163,20 @@ public class SpawnPoints : MonoBehaviour {
     public void EnemyDied()
     {
         enemiesAlive--;
-        
-        // Si on a tué tous les ennemies on se déplace vers la prochaine position
-        if ((enemiesAlive == 0) && (playerScript))
+
+        if (enemiesAlive == 0)
         {
-            playerScript.GoToNextPosition();
+            // Si on a tué tous les ennemis et qu'il reste des vagues
+            if (waves < 2)
+            {
+                SpawnEnemies(playerScript.GetComponent<Collider>());
+                waves++;
+            }
+            // Si on a tué tous les ennemies on se déplace vers la prochaine position
+            else if (playerScript)
+            {
+                playerScript.GoToNextPosition();
+            }
         }
 
         // Si il ne reste qu'un seul ennemie et que le dernier survivant est le boss on le fait revenir

@@ -28,7 +28,7 @@ public class HealthManager : MonoBehaviour {
         LifeBar.size = (float)LifePoints * 1 / MaxHealth;
 
         // Si le personnage n'a plus de points de vie
-        if (LifePoints == 0)
+        if (LifePoints <= 0)
         {
             if (character.tag == "Player")
             {

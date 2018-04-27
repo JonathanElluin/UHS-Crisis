@@ -180,7 +180,7 @@ public class Player : Humanoid
                 {
                     transform.rotation = GetDestination().rotation;
                     SwitchState(Etape.Uncovered);
-                    target = ChooseTarget(1);
+                    //target = ChooseTarget(1);
                 }
                 break;
 
@@ -192,7 +192,7 @@ public class Player : Humanoid
                 {
                     LookToTarget();
 
-                    if (Input.GetButtonDown("Fire"))
+                    if (Input.GetKeyDown(btnTir))
                     {
                         Fire();
                     }
@@ -210,7 +210,7 @@ public class Player : Humanoid
 
                
                 // Si on peut se mettre à couvert et qu'il nous reste des possibilitées de se cacher on y va 
-                if (Input.GetButtonDown("Down") && actualPosition.ptDecouvert != null && getCoveredTokens > 0)
+                if (Input.GetKeyDown(btnDown) && actualPosition.ptDecouvert != null && getCoveredTokens > 0)
                 {
                     getCoveredTokens--;
                     col.enabled = false;
@@ -331,7 +331,7 @@ public class Player : Humanoid
         }
 
         // Si on a pas trouvé d'ennemis on refait avec l'autre direction
-        if (!_enemyCloser)
+        /*if (!_enemyCloser)
         {
             try
             {
@@ -348,7 +348,7 @@ public class Player : Humanoid
             {
 
             }
-        }
+        }*/
 
         if (!_enemyCloser)
         {

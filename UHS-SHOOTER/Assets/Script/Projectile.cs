@@ -30,8 +30,16 @@ public class Projectile : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
+        if (!_parent && other.tag == "Player")
+        {
+            other.gameObject.GetComponent<HealthManager>().TakeDammage(damages, other.gameObject);
+            Destroy(gameObject);
+
+            return;
+        }
+
         // Si le missile a touché le personnage qui l'a tiré il ne prends pas de dégats
-        if (other.transform == _parent.transform || !_parent)
+        if (other.transform == _parent.transform)
         {
             return;
         }

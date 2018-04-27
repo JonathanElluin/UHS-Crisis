@@ -81,7 +81,7 @@ public class Enemy : Humanoid {
                 }
                 break;
 
-            // Lorsque que le joueur arrive au point de destination, il est à découvert et peut tirer
+            // Lorsque que l'enemy arrive au point de destination, il est à découvert et peut tirer
             case Etape.Uncovered:
 
                 //Look enemy and shoot
