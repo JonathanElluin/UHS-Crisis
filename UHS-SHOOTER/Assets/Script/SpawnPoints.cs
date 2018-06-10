@@ -33,6 +33,8 @@ public class SpawnPoints : MonoBehaviour {
     private Enemy scriptEnemy;
     private GameObject target;
 
+    private bool applicationQuit = false;
+
     // Use this for initialization
     void Start ()
     {
@@ -42,7 +44,10 @@ public class SpawnPoints : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        
+        if (applicationQuit)
+        {
+            Application.Quit();
+        }
     }
 
     // lorsqu'un objet entre en collision avec le spawnpoint
@@ -116,7 +121,7 @@ public class SpawnPoints : MonoBehaviour {
         }
 
         // Si on a passé les 3 vagues et que le temps est écoulé le boss meurt au prochain coup
-        if (playerScript.GetTimeElapsed().TotalSeconds >= 290 && waveDied)
+        if (playerScript.GetTimeElapsed().TotalSeconds >= 295 && waveDied)
         {
             Destroy(enemy);
         }
@@ -164,7 +169,13 @@ public class SpawnPoints : MonoBehaviour {
     {
         enemiesAlive--;
 
-        if (enemiesAlive == 0)
+
+        if (prefabIsBoss && enemiesAlive == 0)
+        {
+            StartCoroutine("BossDied");
+        }
+        
+        if (enemiesAlive == 0 && !prefabIsBoss)
         {
             // Si on a tué tous les ennemis et qu'il reste des vagues
             if (waves < 2)
@@ -179,7 +190,7 @@ public class SpawnPoints : MonoBehaviour {
             }
         }
 
-        // Si il ne reste qu'un seul ennemie et que le dernier survivant est le boss on le fait revenir
+        // Si il ne reste qu'un seul ennemie et que c'est le boss on le fait revenir
         if (prefabIsBoss && enemiesAlive == 1)
         {
             scriptEnemy.SetDestination(checkPoints[0].transform);
@@ -189,5 +200,12 @@ public class SpawnPoints : MonoBehaviour {
         }
 
         Debug.Log(playerScript.GetTimeElapsed());
+    }
+
+    IEnumerator BossDied()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        applicationQuit = true;
     }
 }
