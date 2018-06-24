@@ -24,6 +24,7 @@ public class CamManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 		//Move and rotate PlayerCam to its destination
 		if (moveCam)
 		{
