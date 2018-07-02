@@ -21,26 +21,30 @@ public class CamManager : MonoBehaviour {
 	void Start () {
 
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
-		//Move and rotate PlayerCam to its destination
-		if (moveCam)
-		{
-			MainCam.transform.rotation = Quaternion.Slerp(MainCam.transform.rotation, DestinationCam.rotation, time * Time.deltaTime);
-			MainCam.transform.position = Vector3.Lerp(MainCam.transform.position, DestinationCam.position, time * Time.deltaTime);
-		}
+    // Update is called once per frame
+    void Update()
+    {
 
-		if (!moveCam) return;
+        if (DestinationCam)
+        {
+            //Move and rotate PlayerCam to its destination
+            if (moveCam)
+            {
+                MainCam.transform.rotation = Quaternion.Slerp(MainCam.transform.rotation, DestinationCam.rotation, time * Time.deltaTime);
+                MainCam.transform.position = Vector3.Lerp(MainCam.transform.position, DestinationCam.position, time * Time.deltaTime);
+            }
+
+            if (!moveCam) return;
 
 
-		//Stop move and rotate
-		if (MainCam.transform.rotation == DestinationCam.rotation & MainCam.transform.position == DestinationCam.position)
-		{
-			moveCam = false;
-		}
-	}
+            //Stop move and rotate
+            if (MainCam.transform.rotation == DestinationCam.rotation & MainCam.transform.position == DestinationCam.position)
+            {
+                moveCam = false;
+            }
+        }
+    }
 
 	public void SetTPSCam(Transform _cam)
 	{

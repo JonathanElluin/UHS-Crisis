@@ -30,49 +30,52 @@ public class Projectile : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (!_parent && other.tag == "Player")
+        if (other && _parent)
         {
-            other.gameObject.GetComponent<HealthManager>().TakeDammage(damages, other.gameObject);
-            Destroy(gameObject);
+            if (!_parent && other.tag == "Player")
+            {
+                other.gameObject.GetComponent<HealthManager>().TakeDammage(damages, other.gameObject);
+                Destroy(gameObject);
 
-            return;
-        }
+                return;
+            }
 
-        // Si le missile a touché le personnage qui l'a tiré il ne prends pas de dégats
-        if (other.transform == _parent.transform)
-        {
-            return;
-        }
+            // Si le missile a touché le personnage qui l'a tiré il ne prends pas de dégats
+            if (other && other.transform == _parent.transform)
+            {
+                return;
+            }
 
-        Debug.Log(other.tag);
+            Debug.Log(other.tag);
 
-        if (other.tag == "CheckPoint" || other.tag == "Trigger")
-        {
+            if (other && other.tag == "CheckPoint" || other && other.tag == "Trigger")
+            {
 
-        }
+            }
 
-        // If the projectile hits an enemy or the player, it deals damages and disappear
-        else if (other.tag == "Enemy" || other.tag == "Player")
-        {
-            other.gameObject.GetComponent<HealthManager>().TakeDammage(damages, other.gameObject);
-            Destroy(gameObject);
-        }
+            // If the projectile hits an enemy or the player, it deals damages and disappear
+            else if (other && other.tag == "Enemy" ||  other && other.tag == "Player")
+            {
+                other.gameObject.GetComponent<HealthManager>().TakeDammage(damages, other.gameObject);
+                Destroy(gameObject);
+            }
 
-        // If it hits a wall, it disappear. 
-        else if (other.tag == "Mur")
-        {
-            Destroy(gameObject);
-        }
+            // If it hits a wall, it disappear. 
+            else if (other && other.tag == "Mur")
+            {
+                Destroy(gameObject);
+            }
 
-        // Si on touche le boss
-        else if(other.tag == "Boss")
-        {
-            other.gameObject.GetComponent<HealthManager>().TakeDammage(damages, other.gameObject);
-            Destroy(gameObject);
-        }
+            // Si on touche le boss
+            else if (other && other.tag == "Boss")
+            {
+                other.gameObject.GetComponent<HealthManager>().TakeDammage(damages, other.gameObject);
+                Destroy(gameObject);
+            }
 
-        else
-        {
+            else
+            {
+            }
         }
     }
 }
