@@ -331,7 +331,7 @@ public class Player : Humanoid
         }
 
         // Si on a pas trouvé d'ennemis on refait avec l'autre direction
-        /*if (!_enemyCloser)
+        if (!_enemyCloser)
         {
             try
             {
@@ -348,7 +348,7 @@ public class Player : Humanoid
             {
 
             }
-        }*/
+        }
 
         if (!_enemyCloser)
         {
