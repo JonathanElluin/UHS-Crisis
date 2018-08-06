@@ -16,7 +16,7 @@ public class Player : Humanoid
     private KeyCode btnLeft = KeyCode.LeftArrow;
     private KeyCode btnDown = KeyCode.DownArrow;
     private KeyCode btnRight = KeyCode.RightArrow;
-    private KeyCode btnUp = KeyCode.UpArrow;
+    //private KeyCode btnUp = KeyCode.UpArrow;
 
 
     public CamManager CamMngr;
@@ -30,7 +30,7 @@ public class Player : Humanoid
     //Enemy
     bool EnemiesFind = false;
     List<GameObject> Enemies = new List<GameObject>();
-    int indexEnemies = 0;
+    //int indexEnemies = 0;
 
     //Tuto
     private bool tutoDone = false;

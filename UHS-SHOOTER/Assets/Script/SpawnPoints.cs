@@ -199,7 +199,14 @@ public class SpawnPoints : MonoBehaviour {
             waveDied = true;
         }
 
-        Debug.Log(playerScript.GetTimeElapsed());
+        try
+        {
+            Debug.Log(playerScript.GetTimeElapsed());
+        }
+        catch (Exception ex)
+        {
+
+        }
     }
 
     IEnumerator BossDied()

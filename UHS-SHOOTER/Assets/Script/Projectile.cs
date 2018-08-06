@@ -11,7 +11,8 @@ public class Projectile : MonoBehaviour {
 
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
         //Détruit le projectile après 10 secondes s'il ne rencontre pas d'obstacles
         Destroy(gameObject, 10);
     }

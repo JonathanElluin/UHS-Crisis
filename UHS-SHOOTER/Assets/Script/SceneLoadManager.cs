@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneLoadManager : MonoBehaviour {
-    SceneLoadManager SceneLoadMngr;
     List<Scene> Scenes = new List<Scene>();
     
     // Use this for initialization
@@ -12,7 +11,6 @@ public class SceneLoadManager : MonoBehaviour {
     void Start()
     {
         DontDestroyOnLoad(this);
-        SceneLoadMngr = this;
         Debug.Log("manager");
         for (int i=0; i< SceneManager.sceneCountInBuildSettings; i++)
         {

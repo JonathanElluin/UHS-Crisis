@@ -290,6 +290,9 @@ MonoBehaviour:
   destination: []
   Projectile: {fileID: 1145037282955554, guid: d9d05ffbe1692d7498fb799360c6c23a, type: 2}
   damages: 1
+  laserSound: {fileID: 82240317226693710, guid: 54cd7bfd3c9f3394b8a28dd6acde674a,
+    type: 2}
+  clip: {fileID: 8300000, guid: f3d9a582fb4232047bc25841fb4243a2, type: 3}
   agent: {fileID: 0}
   col: {fileID: 0}
   target: {fileID: 0}
