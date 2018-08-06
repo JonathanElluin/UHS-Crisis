@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: ac33a846429facb4da8379e191d5dfa1
+timeCreated: 1532368617
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Projectile: {instanceID: 0}
+  - agent: {instanceID: 0}
+  - col: {instanceID: 0}
+  - target: {instanceID: 0}
+  - SoundTir: {fileID: 8300000, guid: 2b639be81941d634aae7aba35646a7aa, type: 3}
+  - CamMngr: {instanceID: 0}
+  - tutoImage: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

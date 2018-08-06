@@ -1,0 +1,852 @@
+fileFormatVersion: 2
+guid: ab78ab4d977eafc4babec2d6aaed9103
+timeCreated: 1529850131
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Amphi
+    100002: Amphi 1
+    100004: Amphi001
+    100006: Amphi002
+    100008: Architecture
+    100010: Architecture001
+    100012: Barre escalier D
+    100014: Barre escalier D001
+    100016: Barre escalier G
+    100018: Barre escalier G001
+    100020: Barre fond escalier D
+    100022: Barre fond escalier D001
+    100024: Barre fond escalier G
+    100026: Barre fond escalier G001
+    100028: Colonne 005
+    100030: Colonne 006
+    100032: Colonne 007
+    100034: Colonne 008
+    100036: Colonne 1
+    100038: Colonne 2
+    100040: Colonne 3
+    100042: Colonne 4
+    100044: Couloir
+    100046: Couloir001
+    100048: Hall Amphi
+    100050: Hall Amphi001
+    100052: LED support
+    100054: LED support001
+    100056: LED support002
+    100058: LED support003
+    100060: LED support004
+    100062: LED support005
+    100064: LED support006
+    100066: LED support007
+    100068: LED support008
+    100070: LED support009
+    100072: LED support010
+    100074: LED support011
+    100076: LED support012
+    100078: LED support013
+    100080: LED support014
+    100082: LED support015
+    100084: LED support016
+    100086: LED support017
+    100088: LED support018
+    100090: LED support019
+    100092: LED support020
+    100094: LED support021
+    100096: LED support022
+    100098: LED support023
+    100100: LED support024
+    100102: LED support025
+    100104: LED support026
+    100106: LED support027
+    100108: LED support028
+    100110: LED support029
+    100112: LED support030
+    100114: Led vitre
+    100116: Led vitre001
+    100118: Led vitre002
+    100120: Led vitre003
+    100122: Led vitre004
+    100124: Led vitre005
+    100126: Led vitre006
+    100128: Led vitre007
+    100130: Led vitre008
+    100132: Led vitre009
+    100134: Led vitre010
+    100136: Led vitre011
+    100138: Led vitre012
+    100140: Led vitre013
+    100142: Led vitre014
+    100144: Led vitre015
+    100146: Led vitre016
+    100148: Led vitre017
+    100150: Led vitre018
+    100152: Led vitre019
+    100154: Led vitre020
+    100156: Led vitre021
+    100158: Led vitre022
+    100160: Led vitre023
+    100162: Led vitre024
+    100164: Led vitre025
+    100166: Led vitre026
+    100168: Led vitre027
+    100170: Led vitre028
+    100172: Led vitre029
+    100174: Led vitre030
+    100176: Ligne001
+    100178: Ligne002
+    100180: Ligne003
+    100182: Ligne004
+    100184: Ligne005
+    100186: Ligne006
+    100188: Ligne007
+    100190: Ligne008
+    100192: Ligne009
+    100194: Ligne010
+    100196: Ligne011
+    100198: Ligne012
+    100200: Ligne013
+    100202: Ligne014
+    100204: Ligne015
+    100206: Ligne016
+    100208: Ligne017
+    100210: Ligne018
+    100212: Ligne019
+    100214: Ligne020
+    100216: Ligne021
+    100218: Ligne022
+    100220: Ligne023
+    100222: Ligne024
+    100224: Ligne025
+    100226: Ligne026
+    100228: Ligne027
+    100230: Ligne028
+    100232: Ligne029
+    100234: Ligne030
+    100236: Ligne031
+    100238: Ligne032
+    100240: Ligne033
+    100242: Ligne034
+    100244: Ligne035
+    100246: Ligne036
+    100248: Marche D007
+    100250: Marche D1
+    100252: Marche D2
+    100254: Marche D3
+    100256: Marche D4
+    100258: Marche D5
+    100260: Marche D6
+    100262: Marche G007
+    100264: Marche G1
+    100266: Marche G2
+    100268: Marche G3
+    100270: Marche G4
+    100272: Marche G5
+    100274: Marche G6
+    100276: //RootNode
+    100278: Plafond
+    100280: Plan001
+    100282: Plan002
+    100284: Plan003
+    100286: Plan004
+    100288: Plan005
+    100290: Plan006
+    100292: Plan007
+    100294: Plan008
+    100296: Plan009
+    100298: Plan010
+    100300: Plan011
+    100302: Plan012
+    100304: Plan013
+    100306: Plan014
+    100308: Plan015
+    100310: Plan016
+    100312: Plan017
+    100314: Plan018
+    400000: Amphi
+    400002: Amphi 1
+    400004: Amphi001
+    400006: Amphi002
+    400008: Architecture
+    400010: Architecture001
+    400012: Barre escalier D
+    400014: Barre escalier D001
+    400016: Barre escalier G
+    400018: Barre escalier G001
+    400020: Barre fond escalier D
+    400022: Barre fond escalier D001
+    400024: Barre fond escalier G
+    400026: Barre fond escalier G001
+    400028: Colonne 005
+    400030: Colonne 006
+    400032: Colonne 007
+    400034: Colonne 008
+    400036: Colonne 1
+    400038: Colonne 2
+    400040: Colonne 3
+    400042: Colonne 4
+    400044: Couloir
+    400046: Couloir001
+    400048: Hall Amphi
+    400050: Hall Amphi001
+    400052: LED support
+    400054: LED support001
+    400056: LED support002
+    400058: LED support003
+    400060: LED support004
+    400062: LED support005
+    400064: LED support006
+    400066: LED support007
+    400068: LED support008
+    400070: LED support009
+    400072: LED support010
+    400074: LED support011
+    400076: LED support012
+    400078: LED support013
+    400080: LED support014
+    400082: LED support015
+    400084: LED support016
+    400086: LED support017
+    400088: LED support018
+    400090: LED support019
+    400092: LED support020
+    400094: LED support021
+    400096: LED support022
+    400098: LED support023
+    400100: LED support024
+    400102: LED support025
+    400104: LED support026
+    400106: LED support027
+    400108: LED support028
+    400110: LED support029
+    400112: LED support030
+    400114: Led vitre
+    400116: Led vitre001
+    400118: Led vitre002
+    400120: Led vitre003
+    400122: Led vitre004
+    400124: Led vitre005
+    400126: Led vitre006
+    400128: Led vitre007
+    400130: Led vitre008
+    400132: Led vitre009
+    400134: Led vitre010
+    400136: Led vitre011
+    400138: Led vitre012
+    400140: Led vitre013
+    400142: Led vitre014
+    400144: Led vitre015
+    400146: Led vitre016
+    400148: Led vitre017
+    400150: Led vitre018
+    400152: Led vitre019
+    400154: Led vitre020
+    400156: Led vitre021
+    400158: Led vitre022
+    400160: Led vitre023
+    400162: Led vitre024
+    400164: Led vitre025
+    400166: Led vitre026
+    400168: Led vitre027
+    400170: Led vitre028
+    400172: Led vitre029
+    400174: Led vitre030
+    400176: Ligne001
+    400178: Ligne002
+    400180: Ligne003
+    400182: Ligne004
+    400184: Ligne005
+    400186: Ligne006
+    400188: Ligne007
+    400190: Ligne008
+    400192: Ligne009
+    400194: Ligne010
+    400196: Ligne011
+    400198: Ligne012
+    400200: Ligne013
+    400202: Ligne014
+    400204: Ligne015
+    400206: Ligne016
+    400208: Ligne017
+    400210: Ligne018
+    400212: Ligne019
+    400214: Ligne020
+    400216: Ligne021
+    400218: Ligne022
+    400220: Ligne023
+    400222: Ligne024
+    400224: Ligne025
+    400226: Ligne026
+    400228: Ligne027
+    400230: Ligne028
+    400232: Ligne029
+    400234: Ligne030
+    400236: Ligne031
+    400238: Ligne032
+    400240: Ligne033
+    400242: Ligne034
+    400244: Ligne035
+    400246: Ligne036
+    400248: Marche D007
+    400250: Marche D1
+    400252: Marche D2
+    400254: Marche D3
+    400256: Marche D4
+    400258: Marche D5
+    400260: Marche D6
+    400262: Marche G007
+    400264: Marche G1
+    400266: Marche G2
+    400268: Marche G3
+    400270: Marche G4
+    400272: Marche G5
+    400274: Marche G6
+    400276: //RootNode
+    400278: Plafond
+    400280: Plan001
+    400282: Plan002
+    400284: Plan003
+    400286: Plan004
+    400288: Plan005
+    400290: Plan006
+    400292: Plan007
+    400294: Plan008
+    400296: Plan009
+    400298: Plan010
+    400300: Plan011
+    400302: Plan012
+    400304: Plan013
+    400306: Plan014
+    400308: Plan015
+    400310: Plan016
+    400312: Plan017
+    400314: Plan018
+    2300000: Amphi
+    2300002: Amphi 1
+    2300004: Barre escalier D
+    2300006: Barre escalier D001
+    2300008: Barre fond escalier D
+    2300010: Barre fond escalier D001
+    2300012: Barre fond escalier G
+    2300014: Barre fond escalier G001
+    2300016: Colonne 1
+    2300018: Colonne 2
+    2300020: Colonne 3
+    2300022: Colonne 4
+    2300024: Couloir
+    2300026: Hall Amphi
+    2300028: LED support
+    2300030: LED support001
+    2300032: LED support002
+    2300034: LED support003
+    2300036: LED support004
+    2300038: LED support005
+    2300040: LED support006
+    2300042: LED support007
+    2300044: LED support008
+    2300046: LED support009
+    2300048: LED support010
+    2300050: LED support011
+    2300052: LED support012
+    2300054: LED support013
+    2300056: LED support014
+    2300058: LED support015
+    2300060: LED support016
+    2300062: LED support017
+    2300064: LED support018
+    2300066: LED support019
+    2300068: LED support020
+    2300070: LED support021
+    2300072: LED support022
+    2300074: LED support023
+    2300076: LED support024
+    2300078: LED support025
+    2300080: LED support026
+    2300082: LED support027
+    2300084: LED support028
+    2300086: LED support029
+    2300088: LED support030
+    2300090: Led vitre
+    2300092: Led vitre001
+    2300094: Led vitre002
+    2300096: Led vitre003
+    2300098: Led vitre004
+    2300100: Led vitre005
+    2300102: Led vitre006
+    2300104: Led vitre007
+    2300106: Led vitre008
+    2300108: Led vitre009
+    2300110: Led vitre010
+    2300112: Led vitre011
+    2300114: Led vitre012
+    2300116: Led vitre013
+    2300118: Led vitre014
+    2300120: Led vitre015
+    2300122: Led vitre016
+    2300124: Led vitre017
+    2300126: Led vitre018
+    2300128: Led vitre019
+    2300130: Led vitre020
+    2300132: Led vitre021
+    2300134: Led vitre022
+    2300136: Led vitre023
+    2300138: Led vitre024
+    2300140: Led vitre025
+    2300142: Led vitre026
+    2300144: Led vitre027
+    2300146: Led vitre028
+    2300148: Led vitre029
+    2300150: Led vitre030
+    2300152: Ligne001
+    2300154: Ligne002
+    2300156: Ligne003
+    2300158: Ligne004
+    2300160: Ligne005
+    2300162: Ligne006
+    2300164: Ligne007
+    2300166: Ligne008
+    2300168: Ligne009
+    2300170: Ligne010
+    2300172: Ligne011
+    2300174: Ligne012
+    2300176: Ligne013
+    2300178: Ligne014
+    2300180: Ligne015
+    2300182: Ligne016
+    2300184: Ligne017
+    2300186: Ligne018
+    2300188: Ligne019
+    2300190: Ligne020
+    2300192: Ligne021
+    2300194: Ligne022
+    2300196: Ligne023
+    2300198: Ligne024
+    2300200: Ligne025
+    2300202: Ligne026
+    2300204: Ligne027
+    2300206: Ligne028
+    2300208: Ligne029
+    2300210: Ligne030
+    2300212: Ligne031
+    2300214: Ligne032
+    2300216: Ligne033
+    2300218: Ligne034
+    2300220: Ligne035
+    2300222: Ligne036
+    2300224: Marche D007
+    2300226: Marche D1
+    2300228: Marche D2
+    2300230: Marche D3
+    2300232: Marche D4
+    2300234: Marche D5
+    2300236: Marche D6
+    2300238: Marche G007
+    2300240: Marche G1
+    2300242: Marche G2
+    2300244: Marche G3
+    2300246: Marche G4
+    2300248: Marche G5
+    2300250: Marche G6
+    2300252: Plafond
+    2300254: Plan001
+    2300256: Plan002
+    2300258: Plan003
+    2300260: Plan004
+    2300262: Plan005
+    2300264: Plan006
+    2300266: Plan007
+    2300268: Plan008
+    2300270: Plan009
+    2300272: Plan010
+    2300274: Plan011
+    2300276: Plan012
+    2300278: Plan013
+    2300280: Plan014
+    2300282: Plan015
+    2300284: Plan016
+    2300286: Plan017
+    2300288: Plan018
+    3300000: Amphi
+    3300002: Amphi 1
+    3300004: Barre escalier D
+    3300006: Barre escalier D001
+    3300008: Barre fond escalier D
+    3300010: Barre fond escalier D001
+    3300012: Barre fond escalier G
+    3300014: Barre fond escalier G001
+    3300016: Colonne 1
+    3300018: Colonne 2
+    3300020: Colonne 3
+    3300022: Colonne 4
+    3300024: Couloir
+    3300026: Hall Amphi
+    3300028: LED support
+    3300030: LED support001
+    3300032: LED support002
+    3300034: LED support003
+    3300036: LED support004
+    3300038: LED support005
+    3300040: LED support006
+    3300042: LED support007
+    3300044: LED support008
+    3300046: LED support009
+    3300048: LED support010
+    3300050: LED support011
+    3300052: LED support012
+    3300054: LED support013
+    3300056: LED support014
+    3300058: LED support015
+    3300060: LED support016
+    3300062: LED support017
+    3300064: LED support018
+    3300066: LED support019
+    3300068: LED support020
+    3300070: LED support021
+    3300072: LED support022
+    3300074: LED support023
+    3300076: LED support024
+    3300078: LED support025
+    3300080: LED support026
+    3300082: LED support027
+    3300084: LED support028
+    3300086: LED support029
+    3300088: LED support030
+    3300090: Led vitre
+    3300092: Led vitre001
+    3300094: Led vitre002
+    3300096: Led vitre003
+    3300098: Led vitre004
+    3300100: Led vitre005
+    3300102: Led vitre006
+    3300104: Led vitre007
+    3300106: Led vitre008
+    3300108: Led vitre009
+    3300110: Led vitre010
+    3300112: Led vitre011
+    3300114: Led vitre012
+    3300116: Led vitre013
+    3300118: Led vitre014
+    3300120: Led vitre015
+    3300122: Led vitre016
+    3300124: Led vitre017
+    3300126: Led vitre018
+    3300128: Led vitre019
+    3300130: Led vitre020
+    3300132: Led vitre021
+    3300134: Led vitre022
+    3300136: Led vitre023
+    3300138: Led vitre024
+    3300140: Led vitre025
+    3300142: Led vitre026
+    3300144: Led vitre027
+    3300146: Led vitre028
+    3300148: Led vitre029
+    3300150: Led vitre030
+    3300152: Ligne001
+    3300154: Ligne002
+    3300156: Ligne003
+    3300158: Ligne004
+    3300160: Ligne005
+    3300162: Ligne006
+    3300164: Ligne007
+    3300166: Ligne008
+    3300168: Ligne009
+    3300170: Ligne010
+    3300172: Ligne011
+    3300174: Ligne012
+    3300176: Ligne013
+    3300178: Ligne014
+    3300180: Ligne015
+    3300182: Ligne016
+    3300184: Ligne017
+    3300186: Ligne018
+    3300188: Ligne019
+    3300190: Ligne020
+    3300192: Ligne021
+    3300194: Ligne022
+    3300196: Ligne023
+    3300198: Ligne024
+    3300200: Ligne025
+    3300202: Ligne026
+    3300204: Ligne027
+    3300206: Ligne028
+    3300208: Ligne029
+    3300210: Ligne030
+    3300212: Ligne031
+    3300214: Ligne032
+    3300216: Ligne033
+    3300218: Ligne034
+    3300220: Ligne035
+    3300222: Ligne036
+    3300224: Marche D007
+    3300226: Marche D1
+    3300228: Marche D2
+    3300230: Marche D3
+    3300232: Marche D4
+    3300234: Marche D5
+    3300236: Marche D6
+    3300238: Marche G007
+    3300240: Marche G1
+    3300242: Marche G2
+    3300244: Marche G3
+    3300246: Marche G4
+    3300248: Marche G5
+    3300250: Marche G6
+    3300252: Plafond
+    3300254: Plan001
+    3300256: Plan002
+    3300258: Plan003
+    3300260: Plan004
+    3300262: Plan005
+    3300264: Plan006
+    3300266: Plan007
+    3300268: Plan008
+    3300270: Plan009
+    3300272: Plan010
+    3300274: Plan011
+    3300276: Plan012
+    3300278: Plan013
+    3300280: Plan014
+    3300282: Plan015
+    3300284: Plan016
+    3300286: Plan017
+    3300288: Plan018
+    4300000: Plafond
+    4300002: Led vitre
+    4300004: LED support
+    4300006: LED support001
+    4300008: Led vitre001
+    4300010: LED support002
+    4300012: LED support003
+    4300014: Led vitre002
+    4300016: Led vitre003
+    4300018: LED support004
+    4300020: LED support005
+    4300022: Led vitre004
+    4300024: Led vitre005
+    4300026: LED support006
+    4300028: Led vitre006
+    4300030: LED support007
+    4300032: Led vitre007
+    4300034: LED support008
+    4300036: Led vitre008
+    4300038: LED support009
+    4300040: Led vitre009
+    4300042: LED support010
+    4300044: Led vitre010
+    4300046: LED support011
+    4300048: Led vitre011
+    4300050: LED support012
+    4300052: Led vitre012
+    4300054: LED support013
+    4300056: Led vitre013
+    4300058: LED support014
+    4300060: Led vitre014
+    4300062: LED support015
+    4300064: Led vitre015
+    4300066: LED support016
+    4300068: Led vitre016
+    4300070: LED support017
+    4300072: Led vitre017
+    4300074: LED support018
+    4300076: LED support019
+    4300078: Led vitre018
+    4300080: Led vitre019
+    4300082: LED support020
+    4300084: Led vitre020
+    4300086: LED support021
+    4300088: Led vitre021
+    4300090: LED support022
+    4300092: Led vitre022
+    4300094: LED support023
+    4300096: Led vitre023
+    4300098: LED support024
+    4300100: Led vitre024
+    4300102: LED support025
+    4300104: Led vitre025
+    4300106: LED support026
+    4300108: Led vitre026
+    4300110: LED support027
+    4300112: Led vitre027
+    4300114: LED support028
+    4300116: Led vitre028
+    4300118: LED support029
+    4300120: Led vitre029
+    4300122: LED support030
+    4300124: Led vitre030
+    4300126: Marche D1
+    4300128: Marche D2
+    4300130: Marche D3
+    4300132: Marche D4
+    4300134: Marche D5
+    4300136: Marche D6
+    4300138: Marche G1
+    4300140: Marche G2
+    4300142: Marche G3
+    4300144: Marche G4
+    4300146: Marche G5
+    4300148: Marche G6
+    4300150: Amphi
+    4300152: Amphi
+    4300154: Barre escalier D
+    4300156: Barre fond escalier D
+    4300158: Barre fond escalier G
+    4300160: Colonne 1
+    4300162: Colonne 2
+    4300164: Colonne 3
+    4300166: Colonne 4
+    4300168: Couloir
+    4300170: Hall Amphi
+    4300172: Marche G007
+    4300174: Marche D007
+    4300176: Barre escalier D001
+    4300178: Barre fond escalier D001
+    4300180: Barre fond escalier G001
+    4300182: Plan001
+    4300184: Ligne001
+    4300186: Ligne002
+    4300188: Ligne003
+    4300190: Ligne004
+    4300192: Plan002
+    4300194: Ligne005
+    4300196: Ligne006
+    4300198: Ligne007
+    4300200: Ligne008
+    4300202: Plan003
+    4300204: Plan004
+    4300206: Ligne009
+    4300208: Ligne010
+    4300210: Ligne011
+    4300212: Ligne012
+    4300214: Plan005
+    4300216: Plan006
+    4300218: Ligne013
+    4300220: Ligne014
+    4300222: Ligne015
+    4300224: Ligne016
+    4300226: Plan007
+    4300228: Plan008
+    4300230: Ligne017
+    4300232: Ligne018
+    4300234: Ligne019
+    4300236: Ligne020
+    4300238: Ligne021
+    4300240: Ligne022
+    4300242: Ligne023
+    4300244: Ligne024
+    4300246: Plan009
+    4300248: Plan010
+    4300250: Plan011
+    4300252: Plan012
+    4300254: Ligne025
+    4300256: Ligne026
+    4300258: Ligne027
+    4300260: Ligne028
+    4300262: Ligne029
+    4300264: Ligne030
+    4300266: Plan013
+    4300268: Plan014
+    4300270: Plan015
+    4300272: Ligne031
+    4300274: Ligne032
+    4300276: Ligne033
+    4300278: Ligne034
+    4300280: Ligne035
+    4300282: Ligne036
+    4300284: Plan016
+    4300286: Plan017
+    4300288: Plan018
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #26'
+    second: {fileID: 2100000, guid: b27b843188b82e2419286f4f69d943b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #27'
+    second: {fileID: 2100000, guid: a87d9886b101cff48b3843d2b29b06a8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #28'
+    second: {fileID: 2100000, guid: f048d32f96f803d4a95bf9f4242056c8, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
